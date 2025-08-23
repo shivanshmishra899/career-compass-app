@@ -2,293 +2,70 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale-1.0">
     <title>Login - Diverse Loopers</title>
     <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
     <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+    <!-- 1. Add Supabase JS Library -->
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
     <style>
+        /* All existing CSS styles remain the same */
         @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&display=swap');
-        
-        :root {
-            --color-primary: #3b82f6; 
-            --color-secondary: #ec4899; 
-        }
-
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-            font-family: 'Poppins', sans-serif;
-        }
-
-        body {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            min-height: 100vh;
-            background: #0a0a2a; /* Dark background for contrast */
-            overflow: hidden;
-        }
-
-        .wrapper {
-            position: relative;
-            width: 400px;
-            height: 500px;
-            background: rgba(255, 255, 255, .1);
-            backdrop-filter: blur(30px); /* Increased blur for gooey effect */
-            border: 2px solid rgba(255, 255, 255, .2);
-            border-radius: 16px;
-            box-shadow: 0 0 50px rgba(0, 0, 0, .2);
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            overflow: hidden;
-            transition: height .3s ease;
-        }
-
-        /* --- Animated Blobs --- */
-        .wrapper::before, .wrapper::after {
-            content: '';
-            position: absolute;
-            left: 50%;
-            top: 50%;
-            width: 300px;
-            height: 300px;
-            border-radius: 50%;
-            background: var(--color-primary);
-            opacity: 0.5;
-            filter: blur(60px);
-            z-index: -1;
-            animation: moveBlob1 15s infinite linear;
-        }
-
-        .wrapper::after {
-            width: 250px;
-            height: 250px;
-            background: var(--color-secondary);
-            animation: moveBlob2 15s infinite linear;
-            animation-delay: -7.5s; /* Offset the animation */
-        }
-
-        @keyframes moveBlob1 {
-            0%, 100% { transform: translate(-150%, -150%) scale(1); }
-            25% { transform: translate(50%, -150%) scale(1.2); }
-            50% { transform: translate(50%, 50%) scale(0.8); }
-            75% { transform: translate(-150%, 50%) scale(1.1); }
-        }
-
-        @keyframes moveBlob2 {
-            0%, 100% { transform: translate(50%, 50%) scale(1); }
-            25% { transform: translate(-150%, 50%) scale(0.8); }
-            50% { transform: translate(-150%, -150%) scale(1.2); }
-            75% { transform: translate(50%, -150%) scale(0.9); }
-        }
-        
-        .wrapper.active {
-            height: 550px;
-        }
-
-        .wrapper .form-box {
-            width: 100%;
-            padding: 40px;
-        }
-
-        .wrapper .form-box.login {
-            transition: transform .18s ease;
-            transform: translateX(0);
-        }
-        
-        .wrapper.active .form-box.login {
-            transition: none;
-            transform: translateX(-400px);
-        }
-
-        .wrapper .form-box.register {
-            position: absolute;
-            transition: none;
-            transform: translateX(400px);
-        }
-        
-        .wrapper.active .form-box.register {
-            transition: transform .18s ease;
-            transform: translateX(0);
-        }
-
-        .form-box h2 {
-            font-size: 2em;
-            color: #fff;
-            text-align: center;
-        }
-
-        .input-box {
-            position: relative;
-            width: 100%;
-            height: 50px;
-            border-bottom: 2px solid rgba(255, 255, 255, 0.5);
-            margin: 30px 0;
-        }
-
-        .input-box label {
-            position: absolute;
-            top: 50%;
-            left: 5px;
-            transform: translateY(-50%);
-            font-size: 1em;
-            color: #fff;
-            font-weight: 500;
-            pointer-events: none;
-            transition: .5s;
-        }
-
-        .input-box input:focus~label,
-        .input-box input:valid~label {
-            top: -5px;
-        }
-
-        .input-box input {
-            width: 100%;
-            height: 100%;
-            background: transparent;
-            border: none;
-            outline: none;
-            font-size: 1em;
-            color: #fff;
-            font-weight: 600;
-            padding: 0 35px 0 5px;
-        }
-
-        .input-box .icon {
-            position: absolute;
-            right: 8px;
-            font-size: 1.2em;
-            color: #fff;
-            line-height: 57px;
-        }
-
-        .remember-forgot {
-            font-size: .9em;
-            color: #fff;
-            font-weight: 500;
-            margin: -15px 0 15px;
-            display: flex;
-            justify-content: space-between;
-        }
-
-        .remember-forgot label input {
-            accent-color: var(--color-primary);
-            margin-right: 3px;
-        }
-
-        .remember-forgot a {
-            color: #fff;
-            text-decoration: none;
-        }
-
-        .remember-forgot a:hover {
-            text-decoration: underline;
-        }
-
-        .btn {
-            width: 100%;
-            height: 45px;
-            background: linear-gradient(90deg, var(--color-primary), var(--color-secondary));
-            border: none;
-            outline: none;
-            border-radius: 6px;
-            cursor: pointer;
-            font-size: 1em;
-            color: #fff;
-            font-weight: 600;
-            transition: transform 0.2s, box-shadow 0.2s;
-        }
-
-        .btn:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
-        }
-
-        .login-register {
-            font-size: .9em;
-            color: #fff;
-            text-align: center;
-            font-weight: 500;
-            margin: 25px 0 10px;
-        }
-
-        .login-register p a {
-            color: #fff;
-            text-decoration: none;
-            font-weight: 600;
-        }
-
-        .login-register p a:hover {
-            text-decoration: underline;
-        }
-        
-        .home-link {
-            position: absolute;
-            top: 20px;
-            left: 20px;
-            display: flex;
-            align-items: center;
-            gap: 10px;
-            text-decoration: none;
-            color: #fff;
-            font-weight: 600;
-            font-size: 1.1em;
-            z-index: 10;
-        }
-        .home-link img {
-            width: 40px;
-            height: 40px;
-        }
-        .back-link {
-    position: absolute;
-    top: 30px;
-    right: 30px;
-    display: flex;
-    align-items: center;
-    gap: 8px;
-    text-decoration: none;
-    color: #fff;
-    font-weight: 600;
-    font-size: 1.1em;
-    z-index: 10;
-    padding: 8px 16px;
-    border: 2px solid rgba(255, 255, 255, 0.5);
-    border-radius: 50px;
-    transition: background-color 0.3s, border-color 0.3s;
-}
-.back-link:hover {
-    background-color: rgba(255, 255, 255, 0.1);
-    border-color: rgba(255, 255, 255, 0.8);
-}
-.back-link i {
-    font-size: 1.2em;
-}
+        :root { --color-primary: #3b82f6; --color-secondary: #ec4899; }
+        * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Poppins', sans-serif; }
+        body { display: flex; justify-content: center; align-items: center; min-height: 100vh; background: #0a0a2a; overflow: hidden; }
+        .wrapper { position: relative; width: 400px; height: 500px; background: rgba(255, 255, 255, .1); backdrop-filter: blur(30px); border: 2px solid rgba(255, 255, 255, .2); border-radius: 16px; box-shadow: 0 0 50px rgba(0, 0, 0, .2); display: flex; justify-content: center; align-items: center; overflow: hidden; transition: height .3s ease; }
+        .wrapper::before, .wrapper::after { content: ''; position: absolute; left: 50%; top: 50%; width: 300px; height: 300px; border-radius: 50%; background: var(--color-primary); opacity: 0.5; filter: blur(60px); z-index: -1; animation: moveBlob1 15s infinite linear; }
+        .wrapper::after { width: 250px; height: 250px; background: var(--color-secondary); animation: moveBlob2 15s infinite linear; animation-delay: -7.5s; }
+        @keyframes moveBlob1 { 0%, 100% { transform: translate(-150%, -150%) scale(1); } 25% { transform: translate(50%, -150%) scale(1.2); } 50% { transform: translate(50%, 50%) scale(0.8); } 75% { transform: translate(-150%, 50%) scale(1.1); } }
+        @keyframes moveBlob2 { 0%, 100% { transform: translate(50%, 50%) scale(1); } 25% { transform: translate(-150%, 50%) scale(0.8); } 50% { transform: translate(-150%, -150%) scale(1.2); } 75% { transform: translate(50%, -150%) scale(0.9); } }
+        .wrapper.active { height: 550px; }
+        .wrapper .form-box { width: 100%; padding: 40px; }
+        .wrapper .form-box.login { transition: transform .18s ease; transform: translateX(0); }
+        .wrapper.active .form-box.login { transition: none; transform: translateX(-400px); }
+        .wrapper .form-box.register { position: absolute; transition: none; transform: translateX(400px); }
+        .wrapper.active .form-box.register { transition: transform .18s ease; transform: translateX(0); }
+        .form-box h2 { font-size: 2em; color: #fff; text-align: center; }
+        .input-box { position: relative; width: 100%; height: 50px; border-bottom: 2px solid rgba(255, 255, 255, 0.5); margin: 30px 0; }
+        .input-box label { position: absolute; top: 50%; left: 5px; transform: translateY(-50%); font-size: 1em; color: #fff; font-weight: 500; pointer-events: none; transition: .5s; }
+        .input-box input:focus~label, .input-box input:valid~label { top: -5px; }
+        .input-box input { width: 100%; height: 100%; background: transparent; border: none; outline: none; font-size: 1em; color: #fff; font-weight: 600; padding: 0 35px 0 5px; }
+        .input-box .icon { position: absolute; right: 8px; font-size: 1.2em; color: #fff; line-height: 57px; }
+        .remember-forgot { font-size: .9em; color: #fff; font-weight: 500; margin: -15px 0 15px; display: flex; justify-content: space-between; }
+        .remember-forgot label input { accent-color: var(--color-primary); margin-right: 3px; }
+        .remember-forgot a { color: #fff; text-decoration: none; }
+        .remember-forgot a:hover { text-decoration: underline; }
+        .btn { width: 100%; height: 45px; background: linear-gradient(90deg, var(--color-primary), var(--color-secondary)); border: none; outline: none; border-radius: 6px; cursor: pointer; font-size: 1em; color: #fff; font-weight: 600; transition: transform 0.2s, box-shadow 0.2s; }
+        .btn:hover { transform: translateY(-2px); box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2); }
+        .login-register { font-size: .9em; color: #fff; text-align: center; font-weight: 500; margin: 25px 0 10px; }
+        .login-register p a { color: #fff; text-decoration: none; font-weight: 600; }
+        .login-register p a:hover { text-decoration: underline; }
+        .home-link { position: absolute; top: 30px; left: 30px; display: flex; align-items: center; gap: 15px; text-decoration: none; color: #fff; font-weight: 600; font-size: 1.3em; z-index: 10; }
+        .home-link img { width: 50px; height: 50px; }
+        .back-link { position: absolute; top: 30px; right: 30px; display: flex; align-items: center; gap: 8px; text-decoration: none; color: #fff; font-weight: 600; font-size: 1.1em; z-index: 10; padding: 8px 16px; border: 2px solid rgba(255, 255, 255, 0.5); border-radius: 50px; transition: background-color 0.3s, border-color 0.3s; }
+        .back-link:hover { background-color: rgba(255, 255, 255, 0.1); border-color: rgba(255, 255, 255, 0.8); }
+        .back-link i { font-size: 1.2em; }
+        .message-box { position: absolute; bottom: 20px; left: 50%; transform: translateX(-50%); background: #22c55e; color: white; padding: 10px 20px; border-radius: 8px; z-index: 100; opacity: 0; transition: opacity 0.5s; font-weight: 500; }
+        .message-box.error { background: #ef4444; }
+        .message-box.show { opacity: 1; }
     </style>
 </head>
 <body>
-    <a href="javascript:history.back()" class="back-link">
-    <i class='bx bx-arrow-back'></i> Back
-</a>
-    <a href="index.html" class="home-link">
-        <img src="logo2.png" alt="Logo">
-        <span>Diverse Loopers</span>
-    </a>
+    <a href="javascript:history.back()" class="back-link"><i class='bx bx-arrow-back'></i> Back</a>
+    <a href="index.html" class="home-link"><img src="logo2.png" alt="Logo"><span>Diverse Loopers</span></a>
 
     <div class="wrapper">
         <div class="form-box login">
             <h2>Login</h2>
-            <form action="#">
+            <form id="login-form">
                 <div class="input-box">
                     <span class="icon"><i class='bx bxs-envelope'></i></span>
-                    <input type="email" required>
+                    <input type="email" id="login-email" required>
                     <label>Email</label>
                 </div>
                 <div class="input-box">
                     <span class="icon"><i class='bx bxs-lock-alt'></i></span>
-                    <input type="password" required>
+                    <input type="password" id="login-password" required>
                     <label>Password</label>
                 </div>
                 <div class="remember-forgot">
@@ -304,20 +81,20 @@
 
         <div class="form-box register">
             <h2>Sign Up</h2>
-            <form action="#">
+            <form id="register-form">
                 <div class="input-box">
                     <span class="icon"><i class='bx bxs-user'></i></span>
-                    <input type="text" required>
+                    <input type="text" id="register-username" required>
                     <label>Username</label>
                 </div>
                 <div class="input-box">
                     <span class="icon"><i class='bx bxs-envelope'></i></span>
-                    <input type="email" required>
+                    <input type="email" id="register-email" required>
                     <label>Email</label>
                 </div>
                 <div class="input-box">
                     <span class="icon"><i class='bx bxs-lock-alt'></i></span>
-                    <input type="password" required>
+                    <input type="password" id="register-password" required>
                     <label>Password</label>
                 </div>
                 <div class="remember-forgot">
@@ -330,18 +107,84 @@
             </form>
         </div>
     </div>
+    
+    <div id="message-box" class="message-box"></div>
 
     <script>
+        // --- 2. Initialize Supabase Client ---
+        const SUPABASE_URL = 'https://supabase.com/dashboard/project/tjqsmkaiajdpotmafqvw'; // <-- Paste your Supabase URL here
+        const SUPABASE_ANON_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InRqcXNta2FpYWpkcG90bWFmcXZ3Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3NTU5ODA3NDIsImV4cCI6MjA3MTU1Njc0Mn0.9710q9W5EFfCagj340AizUSKiOXYApy0xkTFszFjO8o'; // <-- Paste your Supabase Anon Key here
+
+        const { createClient } = supabase;
+        const _supabase = createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
+
+        // --- DOM Elements ---
         const wrapper = document.querySelector('.wrapper');
         const registerLink = document.querySelector('.register-link');
         const loginLink = document.querySelector('.login-link');
+        const loginForm = document.getElementById('login-form');
+        const registerForm = document.getElementById('register-form');
+        const messageBox = document.getElementById('message-box');
 
-        registerLink.addEventListener('click', () => {
-            wrapper.classList.add('active');
+        // --- UI Functions ---
+        registerLink.addEventListener('click', (e) => { e.preventDefault(); wrapper.classList.add('active'); });
+        loginLink.addEventListener('click', (e) => { e.preventDefault(); wrapper.classList.remove('active'); });
+
+        function showMessage(message, isError = false) {
+            messageBox.textContent = message;
+            messageBox.className = 'message-box show';
+            if (isError) {
+                messageBox.classList.add('error');
+            }
+            setTimeout(() => {
+                messageBox.classList.remove('show');
+            }, 3000);
+        }
+
+        // --- 3. Supabase Auth Logic ---
+        registerForm.addEventListener('submit', async (e) => {
+            e.preventDefault();
+            const email = document.getElementById('register-email').value;
+            const password = document.getElementById('register-password').value;
+            const username = document.getElementById('register-username').value;
+
+            const { data, error } = await _supabase.auth.signUp({
+                email: email,
+                password: password,
+                options: {
+                    data: {
+                        username: username,
+                    }
+                }
+            });
+
+            if (error) {
+                showMessage(`Error: ${error.message}`, true);
+            } else {
+                showMessage('Success! Please check your email to verify your account.');
+                registerForm.reset();
+            }
         });
 
-        loginLink.addEventListener('click', () => {
-            wrapper.classList.remove('active');
+        loginForm.addEventListener('submit', async (e) => {
+            e.preventDefault();
+            const email = document.getElementById('login-email').value;
+            const password = document.getElementById('login-password').value;
+
+            const { data, error } = await _supabase.auth.signInWithPassword({
+                email: email,
+                password: password,
+            });
+
+            if (error) {
+                showMessage(`Error: ${error.message}`, true);
+            } else {
+                showMessage('Login successful! Redirecting...');
+                // Redirect to the analyzer page after a short delay
+                setTimeout(() => {
+                    window.location.href = 'analyzer.html';
+                }, 1500);
+            }
         });
     </script>
 </body>
