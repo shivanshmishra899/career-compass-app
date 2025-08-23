@@ -44,7 +44,29 @@
             color: var(--color-text);
             line-height: 1.7;
             overflow-x: hidden;
+            animation: fadeInAnimation ease 1s;
+            animation-iteration-count: 1;
+            animation-fill-mode: forwards;
         }
+
+        .fade-out {
+            animation: fadeOutAnimation ease 1s;
+            animation-iteration-count: 1;
+            animation-fill-mode: forwards;
+        }
+
+        
+            @keyframes fadeInAnimation {
+    0% {
+        opacity: 0;
+        transform: translateY(20px); /* Start 20px lower */
+    }
+    100% {
+        opacity: 1;
+        transform: translateY(0); /* End at normal position */
+    }
+}
+        
 
         .container {
             max-width: 1200px;
@@ -70,7 +92,7 @@
 
         /* --- Header & Navbar --- */
         .header {
-            background-color: rgba(237, 237, 237, 0.6);
+            background-color: rgba(247, 243, 243, 0.863);
             /* Made it more transparent */
             backdrop-filter: blur(12px);
             /* Increased the blur slightly */
@@ -131,7 +153,6 @@
                 transition: color 0.3s, background-color 0.3s;
             }
 
-
             .nav-links a:hover {
                 color: var(--color-primary);
                 background-color: var(--color-light);
@@ -154,237 +175,238 @@
                 width: 60%;
                 /* The underline grows to 60% width on hover */
             }
+        }
 
-            .nav-actions {
-                display: flex;
-                align-items: center;
-                gap: 1rem;
-            }
+        .nav-actions {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
 
-            .btn {
-                display: inline-block;
-                padding: 0.6rem 1.2rem;
-                border-radius: 50px;
-                text-decoration: none;
-                font-weight: 600;
-                transition: all 0.3s;
-            }
+        .btn {
+            display: inline-block;
+            padding: 0.6rem 1.2rem;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s;
+        }
 
-            .btn-secondary {
-                border: 2px solid #e2e8f0;
-                color: var(--color-subtle);
-            }
+        .btn-secondary {
+            border: 2px solid #e2e8f0;
+            color: var(--color-subtle);
+        }
 
-            .btn-secondary:hover {
-                border-color: var(--color-primary);
-                color: var(--color-primary);
-            }
+        .btn-secondary:hover {
+            border-color: var(--color-primary);
+            color: var(--color-primary);
+        }
 
-            .btn-primary {
-                background: linear-gradient(90deg, var(--color-primary), var(--color-secondary));
-                color: #fff;
-                border: 2px solid transparent;
-                box-shadow: var(--shadow-md);
-            }
+        .btn-primary {
+            background: linear-gradient(90deg, var(--color-primary), var(--color-secondary));
+            color: #fff;
+            border: 2px solid transparent;
+            box-shadow: var(--shadow-md);
+        }
 
-            .btn-primary:hover {
-                transform: translateY(-2px);
-                box-shadow: var(--shadow-lg);
+        .btn-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: var(--shadow-lg);
+        }
+
+        /* --- Hero Section --- */
+        #hero {
+            position: relative;
+            text-align: center;
+            padding: 8rem 0;
+            background-color: #0a0a2a;
+            color: #fff;
+        }
+
+        #hero-canvas {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 1;
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 2;
+        }
+
+        #hero h1 {
+            font-size: clamp(3rem, 6vw, 5rem);
+            font-weight: 800;
+            line-height: 1.1;
+            background: linear-gradient(90deg, #fff, #c7d2fe);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            margin-bottom: 1.5rem;
+        }
+
+        #hero .tagline {
+            font-size: 1.25rem;
+            color: #e2e8f0;
+            margin: 0 auto 2.5rem;
+            max-width: 700px;
+        }
+
+        /* --- About Section --- */
+        .about-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 4rem;
+            align-items: center;
+        }
+
+        @media (min-width: 992px) {
+            .about-grid {
+                grid-template-columns: 1fr 1fr;
             }
         }
-            /* --- Hero Section --- */
-            #hero {
-                position: relative;
-                text-align: center;
-                padding: 8rem 0;
-                background-color: #0a0a2a;
-                color: #fff;
-            }
 
-            #hero-canvas {
-                position: absolute;
-                top: 0;
-                left: 0;
-                width: 100%;
-                height: 100%;
-                z-index: 1;
-            }
+        .about-image {
+            background: url('team.jpg') no-repeat center center/cover;
+            border-radius: 1rem;
+            min-height: 400px;
+            box-shadow: var(--shadow-lg);
+        }
 
-            .hero-content {
-                position: relative;
-                z-index: 2;
-            }
+        .section-header {
+            text-align: left;
+            margin-bottom: 1.5rem;
+        }
 
-            #hero h1 {
-                font-size: clamp(3rem, 6vw, 5rem);
-                font-weight: 800;
-                line-height: 1.1;
-                background: linear-gradient(90deg, #fff, #c7d2fe);
-                -webkit-background-clip: text;
-                -webkit-text-fill-color: transparent;
-                margin-bottom: 1.5rem;
-            }
+        .section-header h2 {
+            font-size: 2.8rem;
+            font-weight: 700;
+            color: var(--color-dark);
+        }
 
-            #hero .tagline {
-                font-size: 1.25rem;
-                color: #e2e8f0;
-                margin: 0 auto 2.5rem;
-                max-width: 700px;
-            }
+        .section-header p {
+            font-size: 1.1rem;
+            color: var(--color-subtle);
+        }
 
-            /* --- About Section --- */
-            .about-grid {
-                display: grid;
-                grid-template-columns: 1fr;
-                gap: 4rem;
-                align-items: center;
-            }
+        /* --- Contact Section --- */
+        #contact {
+            background-color: var(--color-light);
+        }
 
-            @media (min-width: 992px) {
-                .about-grid {
-                    grid-template-columns: 1fr 1fr;
-                }
-            }
+        .contact-form {
+            max-width: 700px;
+            margin: 0 auto;
+        }
 
-            .about-image {
-                background: url('team.jpg') no-repeat center center/cover;
-                border-radius: 1rem;
-                min-height: 400px;
-                box-shadow: var(--shadow-lg);
-            }
+        .form-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 1.5rem;
+        }
 
-            .section-header {
-                text-align: left;
-                margin-bottom: 1.5rem;
-            }
-
-            .section-header h2 {
-                font-size: 2.8rem;
-                font-weight: 700;
-                color: var(--color-dark);
-            }
-
-            .section-header p {
-                font-size: 1.1rem;
-                color: var(--color-subtle);
-            }
-
-            /* --- Contact Section --- */
-            #contact {
-                background-color: var(--color-light);
-            }
-
-            .contact-form {
-                max-width: 700px;
-                margin: 0 auto;
-            }
-
+        @media (min-width: 768px) {
             .form-grid {
-                display: grid;
-                grid-template-columns: 1fr;
-                gap: 1.5rem;
+                grid-template-columns: 1fr 1fr;
             }
+        }
 
-            @media (min-width: 768px) {
-                .form-grid {
-                    grid-template-columns: 1fr 1fr;
-                }
-            }
+        .form-group {
+            display: flex;
+            flex-direction: column;
+        }
 
-            .form-group {
-                display: flex;
-                flex-direction: column;
-            }
+        .form-group.full-width {
+            grid-column: 1 / -1;
+        }
 
-            .form-group.full-width {
-                grid-column: 1 / -1;
-            }
+        .form-group label {
+            font-weight: 500;
+            margin-bottom: 0.5rem;
+            display: block;
+        }
 
-            .form-group label {
-                font-weight: 500;
-                margin-bottom: 0.5rem;
-                display: block;
-            }
+        .form-group input,
+        .form-group textarea {
+            width: 100%;
+            padding: 0.8rem;
+            border: 1px solid #cbd5e1;
+            border-radius: 0.375rem;
+            font-size: 1rem;
+            font-family: 'Poppins', sans-serif;
+            transition: all 0.3s;
+        }
 
-            .form-group input,
-            .form-group textarea {
-                width: 100%;
-                padding: 0.8rem;
-                border: 1px solid #cbd5e1;
-                border-radius: 0.375rem;
-                font-size: 1rem;
-                font-family: 'Poppins', sans-serif;
-                transition: all 0.3s;
-            }
+        .form-group input:focus,
+        .form-group textarea:focus {
+            outline: none;
+            border-color: var(--color-primary);
+            box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.2);
+        }
 
-            .form-group input:focus,
-            .form-group textarea:focus {
-                outline: none;
-                border-color: var(--color-primary);
-                box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.2);
-            }
+        .form-group textarea {
+            resize: vertical;
+            min-height: 120px;
+        }
 
-            .form-group textarea {
-                resize: vertical;
-                min-height: 120px;
-            }
+        /* --- Footer --- */
+        .footer {
+            background-color: var(--color-dark);
+            color: var(--color-light);
+            padding: 4rem 0;
+            text-align: center;
+        }
 
-            /* --- Footer --- */
-            .footer {
-                background-color: var(--color-dark);
-                color: var(--color-light);
-                padding: 4rem 0;
-                text-align: center;
-            }
+        .footer .logo {
+            justify-content: center;
+        }
 
-            .footer .logo {
-                justify-content: center;
-            }
+        .footer .logo-text {
+            color: #fff;
+        }
 
-            .footer .logo-text {
-                color: #fff;
-            }
+        .footer .tagline {
+            margin: 1rem 0 2rem;
+            color: var(--color-subtle);
+        }
 
-            .footer .tagline {
-                margin: 1rem 0 2rem;
-                color: var(--color-subtle);
-            }
+        .footer-links {
+            margin-bottom: 2rem;
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+        }
 
-            .footer-links {
-                margin-bottom: 2rem;
-                display: flex;
-                justify-content: center;
-                gap: 2rem;
-            }
+        .footer-links a {
+            color: var(--color-light);
+            text-decoration: none;
+            font-weight: 500;
+        }
 
-            .footer-links a {
-                color: var(--color-light);
-                text-decoration: none;
-                font-weight: 500;
-            }
+        .footer-links a:hover {
+            text-decoration: underline;
+        }
 
-            .footer-links a:hover {
-                text-decoration: underline;
-            }
+        .contact-details p {
+            margin-bottom: 0.5rem;
+        }
 
-            .contact-details p {
-                margin-bottom: 0.5rem;
-            }
+        .contact-details a {
+            color: #fff;
+            text-decoration: none;
+        }
 
-            .contact-details a {
-                color: #fff;
-                text-decoration: none;
-            }
+        .contact-details a:hover {
+            text-decoration: underline;
+        }
 
-            .contact-details a:hover {
-                text-decoration: underline;
-            }
-
-            .copyright {
-                margin-top: 3rem;
-                font-size: 0.9rem;
-                color: var(--color-subtle);
-            }
+        .copyright {
+            margin-top: 3rem;
+            font-size: 0.9rem;
+            color: var(--color-subtle);
+        }
     </style>
 </head>
 
@@ -401,7 +423,7 @@
                     <a href="#contact">Contact Us</a>
                 </div>
                 <div class="nav-actions">
-                    <a href="#" class="btn btn-secondary">Login</a>
+                    <a href="login.html" class="btn btn-secondary">Login</a>
                     <a href="analyzer.html" class="btn btn-primary">Path Analyzer</a>
                 </div>
             </nav>
@@ -575,6 +597,27 @@
 
         const fadeElements = document.querySelectorAll('.fade-in');
         fadeElements.forEach(el => observer.observe(el));
+        // --- Smooth Page Transition Logic ---
+document.addEventListener('DOMContentLoaded', () => {
+    const links = document.querySelectorAll('a');
+
+    links.forEach(link => {
+        link.addEventListener('click', e => {
+            const href = link.getAttribute('href');
+
+            // Check if it's a link to another page (not a scroll link like #about)
+            if (href && !href.startsWith('#')) {
+                e.preventDefault(); // Stop the browser from navigating immediately
+                document.body.classList.add('fade-out');
+
+                // Wait for the animation to finish, then navigate
+                setTimeout(() => {
+                    window.location.href = href;
+                }, 800); // 800ms is slightly less than the 1s animation time
+            }
+        });
+    });
+});
     </script>
 </body>
 

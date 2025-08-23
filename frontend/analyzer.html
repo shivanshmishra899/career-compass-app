@@ -49,7 +49,28 @@
             background-color: #fff;
             color: var(--color-text);
             line-height: 1.7;
+            animation: fadeInAnimation ease 1s;
+            animation-iteration-count: 1;
+            animation-fill-mode: forwards;
         }
+
+        .fade-out {
+            animation: fadeOutAnimation ease 1s;
+            animation-iteration-count: 1;
+            animation-fill-mode: forwards;
+        }
+
+       @keyframes fadeInAnimation {
+    0% {
+        opacity: 0;
+        transform: translateY(20px); /* Start 20px lower */
+    }
+    100% {
+        opacity: 1;
+        transform: translateY(0); /* End at normal position */
+    }
+}
+        
 
         /* --- Layout & Containers --- */
         .container {
@@ -68,12 +89,24 @@
 
         /* --- Header --- */
         .header {
-            background-color: #fff;
+            background-color: rgba(255, 255, 255, 0.6);
+            backdrop-filter: blur(12px);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.2);
             padding: 1rem 0;
             box-shadow: var(--shadow-md);
             position: sticky;
             top: 0;
-            z-index: 10;
+            z-index: 1000;
+            margin-bottom: 2rem;
+            /* Adds space between header and content */
+        }
+
+        .navbar {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 1rem;
+            /* Add gap for spacing */
         }
 
         .header .container {
@@ -90,14 +123,18 @@
         }
 
         .logo img {
-            height: 60px;
-            width: 60px;
+            height: 50px;
+            width: 50px;
         }
 
         .logo-text {
             font-size: 1.5rem;
             font-weight: 700;
             color: var(--color-dark);
+        }
+
+        .nav-links {
+            display: none;
         }
 
         /* --- Hero Section --- */
@@ -213,10 +250,67 @@
         }
 
         @media (min-width: 768px) {
-            .form-grid {
-                grid-template-columns: 1fr 1fr;
+            .nav-links {
+                display: flex;
+                align-items: center;
+                gap: 2rem;
+            }
+
+            .nav-links a {
+                position: relative;
+                text-decoration: none;
+                color: var(--color-subtle);
+                font-weight: 600;
+                padding: 8px 16px;
+                border-radius: 50px;
+                transition: color 0.3s, background-color 0.3s;
+            }
+
+            .nav-links a:hover {
+                color: var(--color-primary);
+                background-color: var(--color-light);
+            }
+
+            .nav-links a::after {
+                content: '';
+                position: absolute;
+                width: 0;
+                height: 2px;
+                bottom: -4px;
+                left: 50%;
+                transform: translateX(-50%);
+                background-color: var(--color-primary);
+                transition: width 0.3s ease-out;
+            }
+
+            .nav-links a:hover::after {
+                width: 60%;
             }
         }
+
+
+        .nav-actions {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        .navbar {
+            justify-content: flex-start;
+            /* Align logo to the left */
+        }
+
+        .nav-actions,
+        .nav-links {
+            margin-left: auto;
+            /* Push the actions and links to the right */
+        }
+
+        .nav-links {
+            margin-left: 2rem;
+            /* Add space between buttons and links */
+        }
+
 
         .form-group label {
             font-weight: 500;
@@ -499,10 +593,21 @@
 <body>
     <header class="header">
         <div class="container">
-            <a href="#" class="logo">
-                <img src="logo2.png" alt="Diverse Loopers Logo">
-                <span class="logo-text">Diverse Loopers</span>
-            </a>
+            <nav class="navbar">
+                <a href="index.html" class="logo">
+                    <img src="logo2.png" alt="Diverse Loopers Logo">
+                    <span class="logo-text">Diverse Loopers</span>
+                </a>
+
+                <div class="nav-actions">
+
+                </div>
+                <div class="nav-links">
+                    <a href="index.html">Home</a>
+                    <a href="index.html#about">About Us</a>
+                    <a href="index.html#contact">Contact Us</a>
+                </div>
+            </nav>
         </div>
     </header>
 
@@ -877,6 +982,27 @@
             formContainer.classList.remove('hidden');
             window.scrollTo({ top: document.getElementById('analyzer').offsetTop, behavior: 'smooth' });
         }
+        // --- Smooth Page Transition Logic ---
+document.addEventListener('DOMContentLoaded', () => {
+    const links = document.querySelectorAll('a');
+
+    links.forEach(link => {
+        link.addEventListener('click', e => {
+            const href = link.getAttribute('href');
+
+            // Check if it's a link to another page (not a scroll link like #about)
+            if (href && !href.startsWith('#')) {
+                e.preventDefault(); // Stop the browser from navigating immediately
+                document.body.classList.add('fade-out');
+
+                // Wait for the animation to finish, then navigate
+                setTimeout(() => {
+                    window.location.href = href;
+                }, 800); // 800ms is slightly less than the 1s animation time
+            }
+        });
+    });
+});
     </script>
 </body>
 
