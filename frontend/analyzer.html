@@ -1,0 +1,883 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Diverse Loopers - Career Compass</title>
+    <meta name="description"
+        content="Get a personalized, data-driven roadmap to bridge the gap between your college curriculum and your dream tech job.">
+    <link rel="canonical" href="https://www.diverseloopers.com/" />
+    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+    <link rel="manifest" href="/site.webmanifest">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        /* --- Brand Colors & Global Styles --- */
+        :root {
+            --color-primary: #3b82f6;
+            /* Blue-500 */
+            --color-secondary: #ec4899;
+            /* Pink-500 */
+            --color-dark: #1e293b;
+            /* Slate-800 */
+            --color-light: #f1f5f9;
+            /* Slate-100 */
+            --color-text: #334155;
+            /* Slate-700 */
+            --color-subtle: #64748b;
+            /* Slate-500 */
+            --shadow-md: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);
+            --shadow-lg: 0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1);
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            background-color: #fff;
+            color: var(--color-text);
+            line-height: 1.7;
+        }
+
+        /* --- Layout & Containers --- */
+        .container {
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 0 1.5rem;
+        }
+
+        section {
+            padding: 5rem 0;
+        }
+
+        .hidden {
+            display: none !important;
+        }
+
+        /* --- Header --- */
+        .header {
+            background-color: #fff;
+            padding: 1rem 0;
+            box-shadow: var(--shadow-md);
+            position: sticky;
+            top: 0;
+            z-index: 10;
+        }
+
+        .header .container {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            text-decoration: none;
+        }
+
+        .logo img {
+            height: 60px;
+            width: 60px;
+        }
+
+        .logo-text {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--color-dark);
+        }
+
+        /* --- Hero Section --- */
+        #hero {
+            background: linear-gradient(135deg, rgba(59, 130, 246, 0.05), rgba(236, 72, 153, 0.05));
+            text-align: center;
+            padding: 6rem 0;
+        }
+
+        #hero h1 {
+            font-size: clamp(2.5rem, 5vw, 4rem);
+            font-weight: 700;
+            color: var(--color-dark);
+            line-height: 1.2;
+            background: linear-gradient(90deg, var(--color-primary), var(--color-secondary));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        #hero .tagline {
+            font-size: 1.25rem;
+            color: var(--color-subtle);
+            margin: 1rem auto 2rem;
+            max-width: 600px;
+        }
+
+        .cta-button {
+            display: inline-block;
+            background: linear-gradient(90deg, var(--color-primary), var(--color-secondary));
+            color: #fff;
+            font-size: 1.1rem;
+            font-weight: 600;
+            padding: 1rem 2.5rem;
+            border-radius: 50px;
+            text-decoration: none;
+            transition: transform 0.3s, box-shadow 0.3s;
+            box-shadow: var(--shadow-md);
+        }
+
+        .cta-button:hover {
+            transform: translateY(-3px);
+            box-shadow: var(--shadow-lg);
+        }
+
+        /* --- How It Works Section --- */
+        .section-header {
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+
+        .section-header h2 {
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: var(--color-dark);
+        }
+
+        .section-header p {
+            font-size: 1.1rem;
+            color: var(--color-subtle);
+            max-width: 600px;
+            margin: 0.5rem auto 0;
+        }
+
+        .steps-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            text-align: center;
+        }
+
+        .step-card {
+            background-color: #fff;
+            padding: 2rem;
+            border-radius: 0.75rem;
+            border: 1px solid #e2e8f0;
+        }
+
+        .step-icon {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 70px;
+            height: 70px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, var(--color-primary), var(--color-secondary));
+            color: #fff;
+            margin-bottom: 1.5rem;
+        }
+
+        .step-card h3 {
+            font-size: 1.25rem;
+            font-weight: 600;
+            color: var(--color-dark);
+            margin-bottom: 0.5rem;
+        }
+
+        /* --- Analyzer Section --- */
+        #analyzer {
+            background-color: var(--color-light);
+        }
+
+        .card {
+            background-color: #fff;
+            padding: 2.5rem;
+            border-radius: 0.75rem;
+            box-shadow: var(--shadow-lg);
+        }
+
+        .form-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 1.5rem;
+        }
+
+        @media (min-width: 768px) {
+            .form-grid {
+                grid-template-columns: 1fr 1fr;
+            }
+        }
+
+        .form-group label {
+            font-weight: 500;
+            margin-bottom: 0.5rem;
+            display: block;
+        }
+
+        .form-group input,
+        .form-group select {
+            width: 100%;
+            padding: 0.75rem;
+            border: 1px solid #cbd5e1;
+            border-radius: 0.375rem;
+            font-size: 1rem;
+            font-family: 'Poppins', sans-serif;
+        }
+
+        .form-group input:focus,
+        .form-group select:focus {
+            outline: none;
+            border-color: var(--color-primary);
+            box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.2);
+        }
+
+        .submit-btn {
+            width: 100%;
+            background: linear-gradient(90deg, var(--color-primary), var(--color-secondary));
+            color: #fff;
+            font-weight: 700;
+            padding: 1rem;
+            border: none;
+            border-radius: 0.5rem;
+            font-size: 1.1rem;
+            cursor: pointer;
+            transition: transform 0.3s, box-shadow 0.3s;
+            margin-top: 2rem;
+            box-shadow: var(--shadow-md);
+        }
+
+        .submit-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: var(--shadow-lg);
+        }
+
+        /* --- Loading & Error --- */
+        .loader-container {
+            text-align: center;
+            padding: 3rem 0;
+        }
+
+        .spinner {
+            width: 50px;
+            height: 50px;
+            border: 5px solid var(--color-primary);
+            border-top-color: var(--color-secondary);
+            border-radius: 50%;
+            animation: spin 1s linear infinite;
+            margin: 0 auto 1rem;
+        }
+
+        @keyframes spin {
+            to {
+                transform: rotate(360deg);
+            }
+        }
+
+        .error-message {
+            background-color: #fee2e2;
+            border: 1px solid #f87171;
+            color: #b91c1c;
+            padding: 1rem;
+            border-radius: 0.5rem;
+            text-align: center;
+        }
+
+        /* --- Results Display --- */
+        #results-display .back-btn {
+            margin-bottom: 1.5rem;
+            background: none;
+            border: none;
+            color: var(--color-primary);
+            font-weight: 600;
+            cursor: pointer;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            font-size: 1rem;
+        }
+
+        .results-header h2 {
+            font-size: 2.25rem;
+            font-weight: 700;
+        }
+
+        .results-header h2 span {
+            background: linear-gradient(90deg, var(--color-primary), var(--color-secondary));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .results-header p {
+            margin: 0.5rem 0 2rem;
+            font-size: 1.1rem;
+        }
+
+        .result-section {
+            border-top: 1px solid #e2e8f0;
+            padding-top: 2rem;
+            margin-top: 2rem;
+        }
+
+        .result-section h3 {
+            font-size: 1.5rem;
+            margin-bottom: 0.5rem;
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            color: var(--color-dark);
+        }
+
+        .result-section>p {
+            color: var(--color-subtle);
+            margin-bottom: 1.5rem;
+        }
+
+        /* New Styles for Semester Display */
+        .semester-heading {
+            font-size: 1.2rem;
+            font-weight: 600;
+            color: var(--color-dark);
+            margin-top: 1.5rem;
+            margin-bottom: 1rem;
+            padding-bottom: 0.5rem;
+            border-bottom: 2px solid var(--color-primary);
+        }
+
+        .core-subject-card {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1rem;
+            border: 1px solid #e2e8f0;
+            border-radius: 0.5rem;
+            margin-bottom: 0.75rem;
+            flex-wrap: wrap;
+            gap: 1rem;
+            background-color: var(--color-light);
+        }
+
+        .core-subject-card p {
+            font-weight: 600;
+        }
+
+        .core-skill {
+            background-color: var(--color-light);
+            padding: 1rem;
+            border-radius: 0.5rem;
+            margin-bottom: 0.75rem;
+            border-left: 4px solid var(--color-primary);
+        }
+
+        .core-skill .skill-name {
+            font-weight: 600;
+        }
+
+        .core-skill .skill-reason {
+            font-size: 0.9rem;
+            color: var(--color-text);
+        }
+
+        .missing-skills-container {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.75rem;
+        }
+
+        .missing-skill {
+            background-color: #fef3c7;
+            color: #92400e;
+            font-size: 0.9rem;
+            font-weight: 500;
+            padding: 0.5rem 1rem;
+            border-radius: 9999px;
+        }
+
+        .roadmap-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1rem;
+            border: 1px solid #e2e8f0;
+            border-radius: 0.5rem;
+            margin-bottom: 0.75rem;
+            flex-wrap: wrap;
+            gap: 1rem;
+            transition: box-shadow 0.2s, transform 0.2s;
+        }
+
+        .roadmap-item:hover {
+            transform: translateY(-2px);
+            box-shadow: var(--shadow-md);
+        }
+
+        .roadmap-item p {
+            font-weight: 600;
+        }
+
+        .resource-links a {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            text-decoration: none;
+            font-weight: 500;
+            margin-left: 1.5rem;
+            padding: 0.4rem 0.8rem;
+            border-radius: 6px;
+            transition: background-color 0.2s;
+        }
+
+        .resource-links .youtube-link {
+            color: #c4302b;
+            background-color: rgba(196, 48, 43, 0.1);
+        }
+
+        .resource-links .youtube-link:hover {
+            background-color: rgba(196, 48, 43, 0.2);
+        }
+
+        .resource-links .article-link {
+            color: var(--color-subtle);
+            background-color: #e2e8f0;
+        }
+
+        .resource-links .article-link:hover {
+            background-color: #cbd5e1;
+        }
+
+        /* --- Footer --- */
+        .footer {
+            background-color: var(--color-dark);
+            color: var(--color-light);
+            padding: 4rem 0;
+            text-align: center;
+        }
+
+        .footer .logo {
+            justify-content: center;
+        }
+
+        .footer .logo-text {
+            color: #fff;
+        }
+
+        .footer .tagline {
+            margin: 1rem 0 2rem;
+            color: var(--color-subtle);
+        }
+
+        .contact-details p {
+            margin-bottom: 0.5rem;
+        }
+
+        .contact-details a {
+            color: #fff;
+            text-decoration: none;
+        }
+
+        .contact-details a:hover {
+            text-decoration: underline;
+        }
+
+        .copyright {
+            margin-top: 3rem;
+            font-size: 0.9rem;
+            color: var(--color-subtle);
+        }
+    </style>
+</head>
+
+<body>
+    <header class="header">
+        <div class="container">
+            <a href="#" class="logo">
+                <img src="logo2.png" alt="Diverse Loopers Logo">
+                <span class="logo-text">Diverse Loopers</span>
+            </a>
+        </div>
+    </header>
+
+    <main>
+        <!-- HERO SECTION -->
+        <section id="hero">
+            <div class="container">
+                <h1>Chart Your Course to a Dream Tech Career</h1>
+                <p class="tagline">Empowering talents for tomorrow. Stop guessing, start planning. Get a personalized,
+                    data-driven roadmap to bridge the gap between your college curriculum and your dream job.</p>
+                <a href="#analyzer" class="cta-button">Start Your Analysis Now</a>
+            </div>
+        </section>
+
+        <!-- HOW IT WORKS SECTION -->
+        <section id="how-it-works">
+            <div class="container">
+                <div class="section-header">
+                    <h2>How It Works in 3 Simple Steps</h2>
+                    <p>Our intelligent analysis engine gives you the clarity you need to succeed.</p>
+                </div>
+                <div class="steps-grid">
+                    <div class="step-card">
+                        <div class="step-icon">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24"
+                                fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                                stroke-linejoin="round">
+                                <path d="M17 3a2.828 2.828 0 1 1 4 4L7.5 20.5 2 22l1.5-5.5L17 3z"></path>
+                            </svg>
+                        </div>
+                        <h3>1. Input Your Goals</h3>
+                        <p>Tell us your engineering branch and the specific job role you're aiming for at your target
+                            company.</p>
+                    </div>
+                    <div class="step-card">
+                        <div class="step-icon">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24"
+                                fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                                stroke-linejoin="round">
+                                <path d="M12 20v-6M6 20v-2M18 20v-4"></path>
+                                <path d="M12 14a2 2 0 1 0 0-4 2 2 0 0 0 0 4Z"></path>
+                                <path d="M6 18a2 2 0 1 0 0-4 2 2 0 0 0 0 4Z"></path>
+                                <path d="M18 16a2 2 0 1 0 0-4 2 2 0 0 0 0 4Z"></path>
+                            </svg>
+                        </div>
+                        <h3>2. Get Instant Analysis</h3>
+                        <p>Our system compares your curriculum with the job's requirements to identify your strengths
+                            and skill gaps.</p>
+                    </div>
+                    <div class="step-card">
+                        <div class="step-icon">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24"
+                                fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                                stroke-linejoin="round">
+                                <path
+                                    d="M12 6.042A8.967 8.967 0 0 0 6 3.75c-1.052 0-2.062.18-3 .512v14.25A8.987 8.987 0 0 1 6 18c2.305 0 4.408.867 6 2.292m0-14.25a8.966 8.966 0 0 1 6-2.292c1.052 0 2.062.18 3 .512v14.25A8.987 8.987 0 0 0 18 18a8.967 8.967 0 0 0-6-2.292m0 0V21">
+                                </path>
+                            </svg>
+                        </div>
+                        <h3>3. Follow Your Roadmap</h3>
+                        <p>Receive a personalized learning plan with curated resources to master the skills you need to
+                            land the job.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ANALYZER SECTION -->
+        <section id="analyzer">
+            <div class="container">
+                <div id="form-container" class="card">
+                    <form id="analysis-form">
+                        <div class="section-header" style="margin-bottom: 2rem;">
+                            <h2>Create Your Personalized Roadmap</h2>
+                            <p>Let's get started. Fill in the details below.</p>
+                        </div>
+                        <div class="form-grid">
+                            <div class="form-group"><label for="fullName">Full Name</label><input type="text"
+                                    id="fullName" name="fullName" required></div>
+                            <div class="form-group"><label for="email">Email Address</label><input type="email"
+                                    id="email" name="email" required></div>
+                            <div class="form-group"><label for="collegeName">College Name</label><input type="text"
+                                    id="collegeName" name="collegeName" required></div>
+                            <div class="form-group"><label for="targetCompany">Target Company (e.g.,
+                                    Google)</label><input type="text" id="targetCompany" name="targetCompany"></div>
+                            <div class="form-group"><label for="branch">Engineering Branch</label><select id="branch"
+                                    name="branch">
+                                    <option>Computer Science (CSE)</option>
+                                    <option>Information Technology (IT)</option>
+                                    <option>Electronics & Communication (ECE)</option>
+                                </select></div>
+                            <div class="form-group"><label for="targetRole">Target Job Role</label><select
+                                    id="targetRole" name="targetRole">
+                                    <optgroup label="Software Development & Engineering">
+                                        <option>Software Developer</option>
+                                        <option>Front-End Developer</option>
+                                        <option>Back-End Developer</option>
+                                        <option>Full-Stack Developer</option>
+                                        <option>Mobile Application Developer (iOS/Android)</option>
+                                        <option>Game Developer</option>
+                                        <option>Software Architect</option>
+                                        <option>Embedded Systems Engineer</option>
+                                        <option>Software Development Engineer in Test (SDET)</option>
+                                    </optgroup>
+                                    <optgroup label="Artificial Intelligence & Machine Learning">
+                                        <option>AI/ML Engineer</option>
+                                        <option>Data Scientist</option>
+                                        <option>Data Analyst</option>
+                                        <option>Computer Vision Engineer</option>
+                                        <option>Natural Language Processing (NLP) Scientist</option>
+                                        <option>Prompt Engineer</option>
+                                    </optgroup>
+                                    <optgroup label="Cloud, DevOps & Infrastructure">
+                                        <option>Cloud Engineer</option>
+                                        <option>DevOps Engineer</option>
+                                        <option>Site Reliability Engineer (SRE)</option>
+                                        <option>Infrastructure Engineer</option>
+                                        <option>Network Engineer</option>
+                                    </optgroup>
+                                    <optgroup label="Cybersecurity">
+                                        <option>Cybersecurity Analyst</option>
+                                        <option>Security Engineer</option>
+                                        <option>Penetration Tester (Ethical Hacker)</option>
+                                    </optgroup>
+                                    <optgroup label="Product & Project Management">
+                                        <option>Product Manager</option>
+                                        <option>Technical Program Manager (TPM)</option>
+                                    </optgroup>
+                                </select></div>
+                        </div>
+                        <button type="submit" class="submit-btn">Analyze My Path</button>
+                    </form>
+                </div>
+
+                <div id="loader" class="loader-container hidden">
+                    <div class="spinner"></div>
+                    <p>Analyzing your career path...</p>
+                </div>
+                <div id="error-message-container" class="hidden"></div>
+                <div id="results-display" class="hidden">
+                    <button class="back-btn" id="back-btn"><svg xmlns="http://www.w3.org/2000/svg" width="18"
+                            height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                            stroke-linecap="round" stroke-linejoin="round">
+                            <line x1="19" y1="12" x2="5" y2="12"></line>
+                            <polyline points="12 19 5 12 12 5"></polyline>
+                        </svg> Back to Form</button>
+                    <div class="card">
+                        <div class="results-header">
+                            <h2>Hi, <span id="user-name"></span>!</h2>
+                            <p>Here is your personalized skill analysis for the <strong id="user-role"></strong> role.
+                            </p>
+                        </div>
+                        <div class="result-section">
+                            <h3>✅ Your Core Curriculum Focus</h3>
+                            <p>These subjects from your syllabus are critical. Double down on them.</p>
+                            <div id="core-focus-list"></div>
+                        </div>
+                        <div class="result-section">
+                            <h3>💡 Critical Missing Skills</h3>
+                            <p>To be competitive, you must learn these skills which are not in your curriculum.</p>
+                            <div id="missing-skills-list" class="missing-skills-container"></div>
+                        </div>
+                        <div class="result-section">
+                            <h3>🗺️ Your Personalized Learning Roadmap</h3>
+                            <p>Here are high-quality resources for every critical skill you need.</p>
+                            <div id="roadmap-list"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="footer">
+        <div class="container">
+            <a href="#" class="logo">
+                <img src="logo2.png" alt="Diverse Loopers Logo">
+                <span class="logo-text">Diverse Loopers</span>
+            </a>
+            <p class="tagline">Empowering talents for tomorrow</p>
+            <div class="contact-details">
+                <p>Email: <a href="mailto:contact@diverseloopers.com">contact@diverseloopers.com</a></p>
+                <p>Phone: <a href="tel:+919839350961">+91 98393 50961</a></p>
+            </div>
+            <p class="copyright">&copy; 2024 Diverse Loopers. All Rights Reserved.</p>
+        </div>
+    </footer>
+
+    <script>
+        // --- DOM Element References ---
+        const formContainer = document.getElementById('form-container');
+        const analysisForm = document.getElementById('analysis-form');
+        const loader = document.getElementById('loader');
+        const errorContainer = document.getElementById('error-message-container');
+        const resultsDisplay = document.getElementById('results-display');
+        const backBtn = document.getElementById('back-btn');
+        const branchSelect = document.getElementById('branch');
+        const targetRoleSelect = document.getElementById('targetRole');
+
+        // --- Data for Dynamic Dropdown ---
+        const roleOptions = {
+            "Computer Science (CSE)": `
+        <optgroup label="Software Development & Engineering">
+            <option>Software Developer</option>
+            <option>Front-End Developer</option>
+            <option>Back-End Developer</option>
+            <option>Full-Stack Developer</option>
+        </optgroup>
+        <optgroup label="Artificial Intelligence & Machine Learning">
+            <option>AI/ML Engineer</option>
+            <option>Data Scientist</option>
+        </optgroup>
+        <optgroup label="Cloud, DevOps & Infrastructure">
+            <option>Cloud Engineer</option>
+            <option>DevOps Engineer</option>
+        </optgroup>
+        <optgroup label="Cybersecurity">
+            <option>Cybersecurity Analyst</option>
+        </optgroup>
+        <optgroup label="Product & Project Management">
+            <option>Product Manager</option>
+        </optgroup>
+    `,
+            "Information Technology (IT)": `
+        <optgroup label="IT Support & Operations">
+            <option>IT Support Specialist</option>
+        </optgroup>
+        <optgroup label="Infrastructure & Networking">
+            <option>Network Administrator</option>
+            <option>Systems Administrator (SysAdmin)</option>
+            <option>Cloud Administrator</option>
+        </optgroup>
+        <optgroup label="Security & Compliance">
+            <option>Security Administrator</option>
+        </optgroup>
+        <optgroup label="Management & Strategy">
+            <option>IT Manager</option>
+            <option>Chief Information Officer (CIO)</option>
+        </optgroup>
+    `,
+            "Electronics & Communication (ECE)": `
+        <optgroup label="Core Hardware & Electronics">
+            <option>Hardware Engineer</option>
+        </optgroup>
+        <optgroup label="Embedded Systems & IoT">
+            <option>Embedded Systems Engineer</option>
+        </optgroup>
+        <optgroup label="Semiconductors & VLSI">
+            <option>VLSI Design Engineer</option>
+        </optgroup>
+        <optgroup label="Communications & RF">
+            <option>RF (Radio Frequency) Engineer</option>
+        </optgroup>
+        <optgroup label="Control & Automation">
+            <option>Control Systems Engineer</option>
+        </optgroup>
+         <optgroup label="Signal Processing">
+            <option>Signal Processing Engineer (DSP)</option>
+        </optgroup>
+        <optgroup label="Power Systems">
+            <option>Power Engineer</option>
+        </optgroup>
+    `
+        };
+
+        // --- Event Listeners ---
+        analysisForm.addEventListener('submit', handleFormSubmit);
+        backBtn.addEventListener('click', resetView);
+        branchSelect.addEventListener('change', updateTargetRoles);
+        document.addEventListener('DOMContentLoaded', updateTargetRoles);
+
+        // --- Functions ---
+        function updateTargetRoles() {
+            const selectedBranch = branchSelect.value;
+            targetRoleSelect.innerHTML = roleOptions[selectedBranch] || '';
+        }
+        async function handleFormSubmit(event) {
+            event.preventDefault();
+            const formData = new FormData(analysisForm);
+            const fullName = formData.get('fullName');
+            const branch = formData.get('branch');
+            const targetRole = formData.get('targetRole');
+
+            formContainer.classList.add('hidden');
+            errorContainer.classList.add('hidden');
+            resultsDisplay.classList.add('hidden');
+            loader.classList.remove('hidden');
+
+            try {
+                const response = await fetch('https://career-compass-app.onrender.com/api/analyze', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({ branch, targetRole }),
+                });
+                const data = await response.json();
+                if (!response.ok) throw new Error(data.error || 'An unknown error occurred.');
+
+                populateResults(data, fullName, targetRole);
+                resultsDisplay.classList.remove('hidden');
+            } catch (error) {
+                errorContainer.innerHTML = `<div class="error-message"><strong>Error:</strong> ${error.message}</div>`;
+                errorContainer.classList.remove('hidden');
+                formContainer.classList.remove('hidden');
+            } finally {
+                loader.classList.add('hidden');
+            }
+        }
+
+        function populateResults(data, userName, targetRole) {
+            document.getElementById('user-name').textContent = userName || "Student";
+            document.getElementById('user-role').textContent = targetRole;
+
+            // --- NEW LOGIC FOR SEMESTER-WISE DISPLAY ---
+            const coreFocusList = document.getElementById('core-focus-list');
+            coreFocusList.innerHTML = ''; // Clear previous results
+            const semesters = data.coreFocusBySemester ? Object.keys(data.coreFocusBySemester) : [];
+
+            if (semesters.length === 0) {
+                coreFocusList.innerHTML = `<p>No direct overlap found between your curriculum and this role's core skills. Focus on the 'Missing Skills' and 'Roadmap' sections!</p>`;
+            } else {
+                semesters.forEach(semester => {
+                    const semesterHeading = document.createElement('h4');
+                    semesterHeading.className = 'semester-heading';
+                    semesterHeading.textContent = semester;
+                    coreFocusList.appendChild(semesterHeading);
+
+                    const subjects = data.coreFocusBySemester[semester];
+                    subjects.forEach(subject => {
+                        const subjectCard = document.createElement('div');
+                        subjectCard.className = 'core-subject-card';
+                        subjectCard.innerHTML = `
+                <p>${subject.name}</p>
+                <div class="resource-links">
+                    <a href="${subject.youtube}" target="_blank" rel="noopener noreferrer" class="youtube-link">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22.54 6.42a2.78 2.78 0 0 0-1.94-2C18.88 4 12 4 12 4s-6.88 0-8.6.46a2.78 2.78 0 0 0-1.94 2A29 29 0 0 0 1 11.75a29 29 0 0 0 .46 5.33A2.78 2.78 0 0 0 3.4 19c1.72.46 8.6.46 8.6.46s6.88 0 8.6-.46a2.78 2.78 0 0 0 1.94-2 29 29 0 0 0 .46-5.25 29 29 0 0 0-.46-5.33z"></path><polygon points="9.75 15.02 15.5 11.75 9.75 8.48 9.75 15.02"></polygon></svg> YouTube
+                    </a>
+                    <a href="${subject.article}" target="_blank" rel="noopener noreferrer" class="article-link">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path><polyline points="14 2 14 8 20 8"></polyline><line x1="16" y1="13" x2="8" y2="13"></line><line x1="16" y1="17" x2="8" y2="17"></line><polyline points="10 9 9 9 8 9"></polyline></svg> Article
+                    </a>
+                </div>
+            `;
+                        coreFocusList.appendChild(subjectCard);
+                    });
+                });
+            }
+            const missingSkillsList = document.getElementById('missing-skills-list');
+            missingSkillsList.innerHTML = data.criticalMissingSkills.map(skill => `
+                <span class="missing-skill">${skill}</span>
+            `).join('') || `<p>Great news! Your curriculum seems to cover all critical skills for this role.</p>`;
+
+            const roadmapList = document.getElementById('roadmap-list');
+            roadmapList.innerHTML = data.personalizedRoadmap.map(item => `
+                <div class="roadmap-item">
+                    <p>${item.name}</p>
+                    <div class="resource-links">
+                        <a href="${item.youtube}" target="_blank" rel="noopener noreferrer" class="youtube-link">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22.54 6.42a2.78 2.78 0 0 0-1.94-2C18.88 4 12 4 12 4s-6.88 0-8.6.46a2.78 2.78 0 0 0-1.94 2A29 29 0 0 0 1 11.75a29 29 0 0 0 .46 5.33A2.78 2.78 0 0 0 3.4 19c1.72.46 8.6.46 8.6.46s6.88 0 8.6-.46a2.78 2.78 0 0 0 1.94-2 29 29 0 0 0 .46-5.25 29 29 0 0 0-.46-5.33z"></path><polygon points="9.75 15.02 15.5 11.75 9.75 8.48 9.75 15.02"></polygon></svg>
+                            YouTube
+                        </a>
+                        <a href="${item.article}" target="_blank" rel="noopener noreferrer" class="article-link">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path><polyline points="14 2 14 8 20 8"></polyline><line x1="16" y1="13" x2="8" y2="13"></line><line x1="16" y1="17" x2="8" y2="17"></line><polyline points="10 9 9 9 8 9"></polyline></svg>
+                            Article
+                        </a>
+                    </div>
+                </div>
+            `).join('');
+        }
+
+        function resetView() {
+            resultsDisplay.classList.add('hidden');
+            errorContainer.classList.add('hidden');
+            formContainer.classList.remove('hidden');
+            window.scrollTo({ top: document.getElementById('analyzer').offsetTop, behavior: 'smooth' });
+        }
+    </script>
+</body>
+
+</html>
