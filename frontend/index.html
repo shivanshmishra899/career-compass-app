@@ -699,12 +699,86 @@
         const errorContainer = document.getElementById('error-message-container');
         const resultsDisplay = document.getElementById('results-display');
         const backBtn = document.getElementById('back-btn');
+        const branchSelect = document.getElementById('branch');
+        const targetRoleSelect = document.getElementById('targetRole');
+
+        // --- Data for Dynamic Dropdown ---
+        const roleOptions = {
+            "Computer Science (CSE)": `
+        <optgroup label="Software Development & Engineering">
+            <option>Software Developer</option>
+            <option>Front-End Developer</option>
+            <option>Back-End Developer</option>
+            <option>Full-Stack Developer</option>
+        </optgroup>
+        <optgroup label="Artificial Intelligence & Machine Learning">
+            <option>AI/ML Engineer</option>
+            <option>Data Scientist</option>
+        </optgroup>
+        <optgroup label="Cloud, DevOps & Infrastructure">
+            <option>Cloud Engineer</option>
+            <option>DevOps Engineer</option>
+        </optgroup>
+        <optgroup label="Cybersecurity">
+            <option>Cybersecurity Analyst</option>
+        </optgroup>
+        <optgroup label="Product & Project Management">
+            <option>Product Manager</option>
+        </optgroup>
+    `,
+            "Information Technology (IT)": `
+        <optgroup label="IT Support & Operations">
+            <option>IT Support Specialist</option>
+        </optgroup>
+        <optgroup label="Infrastructure & Networking">
+            <option>Network Administrator</option>
+            <option>Systems Administrator (SysAdmin)</option>
+            <option>Cloud Administrator</option>
+        </optgroup>
+        <optgroup label="Security & Compliance">
+            <option>Security Administrator</option>
+        </optgroup>
+        <optgroup label="Management & Strategy">
+            <option>IT Manager</option>
+            <option>Chief Information Officer (CIO)</option>
+        </optgroup>
+    `,
+            "Electronics & Communication (ECE)": `
+        <optgroup label="Core Hardware & Electronics">
+            <option>Hardware Engineer</option>
+        </optgroup>
+        <optgroup label="Embedded Systems & IoT">
+            <option>Embedded Systems Engineer</option>
+        </optgroup>
+        <optgroup label="Semiconductors & VLSI">
+            <option>VLSI Design Engineer</option>
+        </optgroup>
+        <optgroup label="Communications & RF">
+            <option>RF (Radio Frequency) Engineer</option>
+        </optgroup>
+        <optgroup label="Control & Automation">
+            <option>Control Systems Engineer</option>
+        </optgroup>
+         <optgroup label="Signal Processing">
+            <option>Signal Processing Engineer (DSP)</option>
+        </optgroup>
+        <optgroup label="Power Systems">
+            <option>Power Engineer</option>
+        </optgroup>
+    `
+        };
 
         // --- Event Listeners ---
         analysisForm.addEventListener('submit', handleFormSubmit);
         backBtn.addEventListener('click', resetView);
+        branchSelect.addEventListener('change', updateTargetRoles);
+        document.addEventListener('DOMContentLoaded', updateTargetRoles);
 
         // --- Functions ---
+        function updateTargetRoles() {
+            const selectedBranch = branchSelect.value;
+            targetRoleSelect.innerHTML = roleOptions[selectedBranch] || '';
+        }
         async function handleFormSubmit(event) {
             event.preventDefault();
             const formData = new FormData(analysisForm);
