@@ -69,68 +69,68 @@ const knowledgeBase = {
         { name: "Object Oriented Programming", name_match: ["Object-Oriented Programming"], youtube: "https://www.youtube.com/watch?v=bSrm9RXwBaI", article: "https://www.freecodecamp.org/news/object-oriented-programming-concepts-for-beginners/" }
       ],
       "Semester 3": [
-            { name: "Data Structures & Algorithms", youtube: "https://www.youtube.com/playlist?list=PLDN4rrl48XKpZkf03iYFl-O29szjTrs_O", article: "https://www.geeksforgeeks.org/learn-data-structures-and-algorithms-dsa-tutorial/" },
-            { name: "Computer Organization", youtube: "https://www.youtube.com/playlist?list=PLBlnK6fEyqRgLLlzdgVwEit3I_pkwM2Q-", article: "https://www.geeksforgeeks.org/computer-organization-and-architecture-tutorials/" },
-            { name: "Operating Systems", youtube: "https://www.youtube.com/playlist?list=PLBlnK6fEyqRiVhbXDGLXDk_OQAeuVcp2O", article: "https://www.geeksforgeeks.org/operating-systems/" }
+        { name: "Data Structures & Algorithms", youtube: "https://www.youtube.com/playlist?list=PLDN4rrl48XKpZkf03iYFl-O29szjTrs_O", article: "https://www.geeksforgeeks.org/learn-data-structures-and-algorithms-dsa-tutorial/" },
+        { name: "Computer Organization", youtube: "https://www.youtube.com/playlist?list=PLBlnK6fEyqRgLLlzdgVwEit3I_pkwM2Q-", article: "https://www.geeksforgeeks.org/computer-organization-and-architecture-tutorials/" },
+        { name: "Operating Systems", youtube: "https://www.youtube.com/playlist?list=PLBlnK6fEyqRiVhbXDGLXDk_OQAeuVcp2O", article: "https://www.geeksforgeeks.org/operating-systems/" }
+      ],
+      "Semester 4": [
+        { name: "Database Management Systems (DBMS)", name_match: ["DBMS"], youtube: "https://www.youtube.com/playlist?list=PLBlnK6fEyqRj_0b-M4E3U2gC-g-u4g9s-", article: "https://www.javatpoint.com/dbms-tutorial" },
+        { name: "Computer Networks", youtube: "https://www.youtube.com/playlist?list=PLBlnK6fEyqRgMCUAG0XRw78UA8qnv6jEx", article: "https://www.geeksforgeeks.org/computer-network-tutorials/" },
+        { name: "Software Engineering", youtube: "https://www.youtube.com/playlist?list=PL_s_El_q-yYQ-8-Wd_h_q-yY0-x7b-x_x", article: "https://www.geeksforgeeks.org/software-engineering/" },
+        { name: "Web Technologies", youtube: "https://www.youtube.com/watch?v=kUMe1FH4paE", article: "https://developer.mozilla.org/en-US/docs/Web" }
+      ],
+      "Semester 5": [
+        { name: "Information Security", name_match: ["Information Security Principles"], youtube: "https://www.youtube.com/watch?v=inWWhr5tnEA", article: "https://www.sans.org/cyber-security-courses/introduction-cyber-security/" },
+        { name: "Cloud Computing", youtube: "https://www.youtube.com/watch?v=k1RI58waXbA", article: "https://aws.amazon.com/what-is-cloud-computing/" }
+      ],
+      "Semester 6": [
+        { name: "Machine Learning", name_match: ["Machine Learning Concepts"], youtube: "https://www.youtube.com/watch?v=i_LwzRVP7bg", article: "https://developers.google.com/machine-learning/crash-course" },
+        { name: "Data Mining & Warehousing", youtube: "https://www.youtube.com/watch?v=p2_p_4jWp_Y", article: "https://www.javatpoint.com/data-mining" },
+        { name: "Mobile Application Development", youtube: "https://www.youtube.com/watch?v=0-S5a0eXPoc", article: "https://flutter.dev/docs" }
+      ],
+      "Semester 7": [
+        { name: "Data Science & Big Data Analytics", name_match: ["Data Analysis", "Big Data Technologies"], youtube: "https://www.youtube.com/watch?v=t_a-Q6-6y-s", article: "https://www.geeksforgeeks.org/what-is-big-data/" },
+        { name: "Advanced Cybersecurity", name_match: ["Network Security"], youtube: "https://www.youtube.com/watch?v=L5gZ0k5983A", article: "https://www.fortinet.com/resources/cyberglossary/what-is-network-security" }
+      ],
+
+      "Electronics & Communication (ECE)": {
+        "Semester 1": [
+          { name: "Engineering Mathematics-I", youtube: "https://www.youtube.com/playlist?list=PL_s_El_q-yYQ-8-Wd_h_q-yY0-x7b-x_x", article: "https://www.geeksforgeeks.org/engineering-mathematics-tutorials/" },
+          { name: "Engineering Physics", youtube: "https://www.youtube.com/playlist?list=PLBlnK6fEyqRh3-PJ2A_2I1-1-p2gI-5za", article: "https://www.britannica.com/science/physics-science" },
+          { name: "Basic Electrical Engineering", youtube: "https://www.youtube.com/playlist?list=PL9RcWoqXmzaL23tjw2d2-3Gk3z23-a9vS", article: "https://www.allaboutcircuits.com/textbook/" },
+          { name: "Programming for Problem Solving (C)", name_match: ["C Programming"], youtube: "https://www.youtube.com/watch?v=KJgsSFOSQv0", article: "https://www.learn-c.org/" }
+        ],
+        "Semester 2": [
+          { name: "Engineering Mathematics-II", youtube: "https://www.youtube.com/playlist?list=PL_s_El_q-yYQ-8-Wd_h_q-yY0-x7b-x_x", article: "https://www.geeksforgeeks.org/engineering-mathematics-tutorials/" },
+          { name: "Data Structures", name_match: ["Data Structures and Algorithms"], youtube: "https://www.youtube.com/playlist?list=PLDN4rrl48XKpZkf03iYFl-O29szjTrs_O", article: "https://www.geeksforgeeks.org/learn-data-structures-and-algorithms-dsa-tutorial/" },
+          { name: "Object Oriented Programming", name_match: ["Object-Oriented Programming"], youtube: "https://www.youtube.com/watch?v=bSrm9RXwBaI", article: "https://www.freecodecamp.org/news/object-oriented-programming-concepts-for-beginners/" }
+        ],
+        "Semester 3": [
+          { name: "Electronic Devices & Circuits", name_match: ["Analog Electronics"], youtube: "https://www.youtube.com/playlist?list=PLBlnK6fEyqRiw-GZRqg_Ld2a_h_T_y_x-", article: "https://www.electronics-tutorials.ws/" },
+          { name: "Signals & Systems", youtube: "https://www.youtube.com/playlist?list=PL_uaeekrhg9I54c6Zuc32ag2a55jVb2IM", article: "https://www.tutorialspoint.com/signals_and_systems/index.htm" },
+          { name: "Digital System Design", name_match: ["Digital Logic"], youtube: "https://www.youtube.com/playlist?list=PLBlnK6fEyqRleS4cNgdVabDrLgEhCunRO", article: "https://www.allaboutcircuits.com/textbook/digital/" }
         ],
         "Semester 4": [
-            { name: "Database Management Systems (DBMS)", name_match: ["DBMS"], youtube: "https://www.youtube.com/playlist?list=PLBlnK6fEyqRj_0b-M4E3U2gC-g-u4g9s-", article: "https://www.javatpoint.com/dbms-tutorial" },
-            { name: "Computer Networks", youtube: "https://www.youtube.com/playlist?list=PLBlnK6fEyqRgMCUAG0XRw78UA8qnv6jEx", article: "https://www.geeksforgeeks.org/computer-network-tutorials/" },
-            { name: "Software Engineering", youtube: "https://www.youtube.com/playlist?list=PL_s_El_q-yYQ-8-Wd_h_q-yY0-x7b-x_x", article: "https://www.geeksforgeeks.org/software-engineering/" },
-            { name: "Web Technologies", youtube: "https://www.youtube.com/watch?v=kUMe1FH4paE", article: "https://developer.mozilla.org/en-US/docs/Web" }
+          { name: "Electromagnetic Field Theory", name_match: ["Electromagnetics"], youtube: "https://www.youtube.com/playlist?list=PL-51WBLyT3_2aO2wBEZA6klV5cT43L2ab", article: "https://www.allaboutcircuits.com/textbook/alternating-current/chpt-14/introduction-to-rf/" },
+          { name: "Control Systems", youtube: "https://www.youtube.com/watch?v=oBc_BHxw78s", article: "https://www.electrical4u.com/control-system/" },
+          { name: "Microprocessors & Microcontrollers", name_match: ["Microprocessors"], youtube: "https://www.youtube.com/playlist?list=PLrjkTql3jnm8HbdMwBYIMAd3UdstWChFH", article: "https://www.geeksforgeeks.org/introduction-of-microcontroller/" },
+          { name: "Digital Communication", name_match: ["Communication Systems"], youtube: "https://www.youtube.com/playlist?list=PL_uaeekrhg9I54c6Zuc32ag2a55jVb2IM", article: "https://www.tutorialspoint.com/digital_communication/index.htm" }
         ],
         "Semester 5": [
-            { name: "Information Security", name_match: ["Information Security Principles"], youtube: "https://www.youtube.com/watch?v=inWWhr5tnEA", article: "https://www.sans.org/cyber-security-courses/introduction-cyber-security/" },
-            { name: "Cloud Computing", youtube: "https://www.youtube.com/watch?v=k1RI58waXbA", article: "https://aws.amazon.com/what-is-cloud-computing/" }
+          { name: "VLSI Design", youtube: "https://www.youtube.com/playlist?list=PLTEh-60_zAfHm-oE5A-9T2QoK-o7L-r7t", article: "https://www.geeksforgeeks.org/vlsi-design-flow-y-chart/" },
+          { name: "Antenna & Wave Propagation", name_match: ["Antenna Design"], youtube: "https://www.youtube.com/watch?v=f2-YJ9450-c", article: "https://www.antenna-theory.com/" },
+          { name: "Digital Signal Processing (DSP)", name_match: ["Digital Signal Processing (DSP) Algorithms"], youtube: "https://www.youtube.com/watch?v=sJV2CIa2S_0", article: "https://www.analog.com/en/education/education-library/dsp-book.html" }
         ],
         "Semester 6": [
-            { name: "Machine Learning", name_match: ["Machine Learning Concepts"], youtube: "https://www.youtube.com/watch?v=i_LwzRVP7bg", article: "https://developers.google.com/machine-learning/crash-course" },
-            { name: "Data Mining & Warehousing", youtube: "https://www.youtube.com/watch?v=p2_p_4jWp_Y", article: "https://www.javatpoint.com/data-mining" },
-            { name: "Mobile Application Development", youtube: "https://www.youtube.com/watch?v=0-S5a0eXPoc", article: "https://flutter.dev/docs" }
+          { name: "Embedded Systems", youtube: "https://www.youtube.com/watch?v=IPnTCB4Dx_s", article: "https://www.freertos.org/about-freertos.html" },
+          { name: "Microwave Engineering", youtube: "https://www.youtube.com/playlist?list=PL4BEF23A32A15232F", article: "https://www.microwaves101.com/" },
+          { name: "Wireless Communication", youtube: "https://www.youtube.com/watch?v=vV4gIkjGGsY", article: "https://www.geeksforgeeks.org/wireless-communication-technologies/" }
         ],
         "Semester 7": [
-            { name: "Data Science & Big Data Analytics", name_match: ["Data Analysis", "Big Data Technologies"], youtube: "https://www.youtube.com/watch?v=t_a-Q6-6y-s", article: "https://www.geeksforgeeks.org/what-is-big-data/" },
-            { name: "Advanced Cybersecurity", name_match: ["Network Security"], youtube: "https://www.youtube.com/watch?v=L5gZ0k5983A", article: "https://www.fortinet.com/resources/cyberglossary/what-is-network-security" }
-        ],
-    
-    "Electronics & Communication (ECE)": {
-      "Semester 1": [
-        { name: "Engineering Mathematics-I", youtube: "https://www.youtube.com/playlist?list=PL_s_El_q-yYQ-8-Wd_h_q-yY0-x7b-x_x", article: "https://www.geeksforgeeks.org/engineering-mathematics-tutorials/" },
-        { name: "Engineering Physics", youtube: "https://www.youtube.com/playlist?list=PLBlnK6fEyqRh3-PJ2A_2I1-1-p2gI-5za", article: "https://www.britannica.com/science/physics-science" },
-        { name: "Basic Electrical Engineering", youtube: "https://www.youtube.com/playlist?list=PL9RcWoqXmzaL23tjw2d2-3Gk3z23-a9vS", article: "https://www.allaboutcircuits.com/textbook/" },
-        { name: "Programming for Problem Solving (C)", name_match: ["C Programming"], youtube: "https://www.youtube.com/watch?v=KJgsSFOSQv0", article: "https://www.learn-c.org/" }
-      ],
-      "Semester 2": [
-        { name: "Engineering Mathematics-II", youtube: "https://www.youtube.com/playlist?list=PL_s_El_q-yYQ-8-Wd_h_q-yY0-x7b-x_x", article: "https://www.geeksforgeeks.org/engineering-mathematics-tutorials/" },
-        { name: "Data Structures", name_match: ["Data Structures and Algorithms"], youtube: "https://www.youtube.com/playlist?list=PLDN4rrl48XKpZkf03iYFl-O29szjTrs_O", article: "https://www.geeksforgeeks.org/learn-data-structures-and-algorithms-dsa-tutorial/" },
-        { name: "Object Oriented Programming", name_match: ["Object-Oriented Programming"], youtube: "https://www.youtube.com/watch?v=bSrm9RXwBaI", article: "https://www.freecodecamp.org/news/object-oriented-programming-concepts-for-beginners/" }
-      ],
-      "Semester 3": [
-            { name: "Electronic Devices & Circuits", name_match: ["Analog Electronics"], youtube: "https://www.youtube.com/playlist?list=PLBlnK6fEyqRiw-GZRqg_Ld2a_h_T_y_x-", article: "https://www.electronics-tutorials.ws/" },
-            { name: "Signals & Systems", youtube: "https://www.youtube.com/playlist?list=PL_uaeekrhg9I54c6Zuc32ag2a55jVb2IM", article: "https://www.tutorialspoint.com/signals_and_systems/index.htm" },
-            { name: "Digital System Design", name_match: ["Digital Logic"], youtube: "https://www.youtube.com/playlist?list=PLBlnK6fEyqRleS4cNgdVabDrLgEhCunRO", article: "https://www.allaboutcircuits.com/textbook/digital/" }
-        ],
-        "Semester 4": [
-            { name: "Electromagnetic Field Theory", name_match: ["Electromagnetics"], youtube: "https://www.youtube.com/playlist?list=PL-51WBLyT3_2aO2wBEZA6klV5cT43L2ab", article: "https://www.allaboutcircuits.com/textbook/alternating-current/chpt-14/introduction-to-rf/" },
-            { name: "Control Systems", youtube: "https://www.youtube.com/watch?v=oBc_BHxw78s", article: "https://www.electrical4u.com/control-system/" },
-            { name: "Microprocessors & Microcontrollers", name_match: ["Microprocessors"], youtube: "https://www.youtube.com/playlist?list=PLrjkTql3jnm8HbdMwBYIMAd3UdstWChFH", article: "https://www.geeksforgeeks.org/introduction-of-microcontroller/" },
-            { name: "Digital Communication", name_match: ["Communication Systems"], youtube: "https://www.youtube.com/playlist?list=PL_uaeekrhg9I54c6Zuc32ag2a55jVb2IM", article: "https://www.tutorialspoint.com/digital_communication/index.htm" }
-        ],
-        "Semester 5": [
-            { name: "VLSI Design", youtube: "https://www.youtube.com/playlist?list=PLTEh-60_zAfHm-oE5A-9T2QoK-o7L-r7t", article: "https://www.geeksforgeeks.org/vlsi-design-flow-y-chart/" },
-            { name: "Antenna & Wave Propagation", name_match: ["Antenna Design"], youtube: "https://www.youtube.com/watch?v=f2-YJ9450-c", article: "https://www.antenna-theory.com/" },
-            { name: "Digital Signal Processing (DSP)", name_match: ["Digital Signal Processing (DSP) Algorithms"], youtube: "https://www.youtube.com/watch?v=sJV2CIa2S_0", article: "https://www.analog.com/en/education/education-library/dsp-book.html" }
-        ],
-        "Semester 6": [
-            { name: "Embedded Systems", youtube: "https://www.youtube.com/watch?v=IPnTCB4Dx_s", article: "https://www.freertos.org/about-freertos.html" },
-            { name: "Microwave Engineering", youtube: "https://www.youtube.com/playlist?list=PL4BEF23A32A15232F", article: "https://www.microwaves101.com/" },
-            { name: "Wireless Communication", youtube: "https://www.youtube.com/watch?v=vV4gIkjGGsY", article: "https://www.geeksforgeeks.org/wireless-communication-technologies/" }
-        ],
-        "Semester 7": [
-            { name: "Satellite Communication", youtube: "https://www.youtube.com/watch?v=Y_2qg-Y2-6U", article: "https://www.tutorialspoint.com/satellite_communication/index.htm" }
+          { name: "Satellite Communication", youtube: "https://www.youtube.com/watch?v=Y_2qg-Y2-6U", article: "https://www.tutorialspoint.com/satellite_communication/index.htm" }
         ],
       }
-  }
+    }
   },
   jobRoles: {
     // --- Software Development & Engineering ---
@@ -279,7 +279,7 @@ app.post('/api/analyze', (req, res) => {
 
   if (!semesterWiseCurriculum || !roleInfo) { return res.status(404).json({ error: 'Selected branch or role not found in our knowledge base.' }); }
   if (typeof semesterWiseCurriculum !== 'object' || Array.isArray(semesterWiseCurriculum)) {
-      return res.status(404).json({ error: 'Semester-wise curriculum not available for the selected branch.' });
+    return res.status(404).json({ error: 'Semester-wise curriculum not available for the selected branch.' });
   }
 
   const criticalSkills = new Set(roleInfo.critical_skills);
@@ -293,29 +293,29 @@ app.post('/api/analyze', (req, res) => {
     const relevantSubjects = [];
 
     subjectsInSemester.forEach(subject => {
-        allCurriculumSubjects.add(subject.name);
-        if (subject.name_match) {
-            subject.name_match.forEach(alias => allCurriculumSubjects.add(alias));
-        }
+      allCurriculumSubjects.add(subject.name);
+      if (subject.name_match) {
+        subject.name_match.forEach(alias => allCurriculumSubjects.add(alias));
+      }
 
-        const isMatch = criticalSkills.has(subject.name) || (subject.name_match && subject.name_match.some(alias => criticalSkills.has(alias)));
-        
-        if (isMatch) {
-            relevantSubjects.push({
-                name: subject.name,
-                youtube: subject.youtube,
-                article: subject.article
-            });
-        }
+      const isMatch = criticalSkills.has(subject.name) || (subject.name_match && subject.name_match.some(alias => criticalSkills.has(alias)));
+
+      if (isMatch) {
+        relevantSubjects.push({
+          name: subject.name,
+          youtube: subject.youtube,
+          article: subject.article
+        });
+      }
     });
 
     if (relevantSubjects.length > 0) {
-        coreFocusBySemester[semester] = relevantSubjects;
+      coreFocusBySemester[semester] = relevantSubjects;
     }
   });
 
   const missingSkills = roleInfo.critical_skills.filter(skill => !allCurriculumSubjects.has(skill));
-  
+
   const personalizedRoadmap = roleInfo.critical_skills.map(skill => ({
     name: skill,
     youtube: resources[skill]?.youtube || '#',
