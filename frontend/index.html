@@ -1,10 +1,12 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Diverse Loopers - Empowering Talents for Tomorrow</title>
-    <meta name="description" content="Diverse Loopers offers a personalized Career Compass tool to help engineering students bridge the gap between their curriculum and their dream tech job.">
+    <meta name="description"
+        content="Diverse Loopers offers a personalized Career Compass tool to help engineering students bridge the gap between their curriculum and their dream tech job.">
     <link rel="canonical" href="https://www.diverseloopers.com/" />
     <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
     <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
@@ -12,19 +14,47 @@
     <link rel="manifest" href="/site.webmanifest">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&display=swap"
+        rel="stylesheet">
     <style>
         :root {
-            --color-primary: #3b82f6; --color-secondary: #ec4899; --color-dark: #1e293b;
-            --color-light: #f1f5f9; --color-text: #334155; --color-subtle: #64748b;
+            --color-primary: #3b82f6;
+            --color-secondary: #ec4899;
+            --color-dark: #1e293b;
+            --color-light: #f1f5f9;
+            --color-text: #334155;
+            --color-subtle: #64748b;
             --shadow-md: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);
             --shadow-lg: 0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1);
         }
-        * { box-sizing: border-box; margin: 0; padding: 0; }
-        html { scroll-behavior: smooth; }
-        body { font-family: 'Poppins', sans-serif; background-color: #fff; color: var(--color-text); line-height: 1.7; overflow-x: hidden; }
-        .container { max-width: 1200px; margin: 0 auto; padding: 0 1.5rem; }
-        section { padding: 6rem 0; }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            background-color: #fff;
+            color: var(--color-text);
+            line-height: 1.7;
+            overflow-x: hidden;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 1.5rem;
+        }
+
+        section {
+            padding: 6rem 0;
+        }
 
         /* --- Animations --- */
         .fade-in {
@@ -32,6 +62,7 @@
             transform: translateY(30px);
             transition: opacity 0.6s ease-out, transform 0.6s ease-out;
         }
+
         .fade-in.visible {
             opacity: 1;
             transform: translateY(0);
@@ -39,94 +70,324 @@
 
         /* --- Header & Navbar --- */
         .header {
-            background-color: rgba(255, 255, 255, 0.8);
-            backdrop-filter: blur(10px);
+            background-color: rgba(237, 237, 237, 0.6);
+            /* Made it more transparent */
+            backdrop-filter: blur(12px);
+            /* Increased the blur slightly */
             padding: 1rem 0;
             box-shadow: var(--shadow-md);
-            position: sticky; top: 0; z-index: 1000;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
             transition: background-color 0.3s;
         }
-        .navbar { display: flex; align-items: center; justify-content: space-between; }
-        .logo { display: flex; align-items: center; gap: 0.75rem; text-decoration: none; }
-        .logo img { height: 50px; width: 50px; }
-        .logo-text { font-size: 1.5rem; font-weight: 700; color: var(--color-dark); }
-        .nav-links { display: none; }
+
+        .navbar {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            text-decoration: none;
+        }
+
+        .logo img {
+            height: 50px;
+            width: 50px;
+        }
+
+        .logo-text {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--color-dark);
+        }
+
+        .nav-links {
+            display: none;
+        }
+
         @media (min-width: 768px) {
-            .nav-links { display: flex; align-items: center; gap: 2rem; }
-            .nav-links a { text-decoration: none; color: var(--color-subtle); font-weight: 500; transition: color 0.3s; }
-            .nav-links a:hover { color: var(--color-primary); }
-        }
-        .nav-actions { display: flex; align-items: center; gap: 1rem; }
-        .btn {
-            display: inline-block; padding: 0.6rem 1.2rem; border-radius: 50px; text-decoration: none;
-            font-weight: 600; transition: all 0.3s;
-        }
-        .btn-secondary { border: 2px solid #e2e8f0; color: var(--color-subtle); }
-        .btn-secondary:hover { border-color: var(--color-primary); color: var(--color-primary); }
-        .btn-primary {
-            background: linear-gradient(90deg, var(--color-primary), var(--color-secondary)); color: #fff;
-            border: 2px solid transparent; box-shadow: var(--shadow-md);
-        }
-        .btn-primary:hover { transform: translateY(-2px); box-shadow: var(--shadow-lg); }
+            .nav-links {
+                display: flex;
+                align-items: center;
+                gap: 2rem;
+            }
 
-        /* --- Hero Section --- */
-        #hero {
-            position: relative; text-align: center; padding: 8rem 0;
-            background-color: #0a0a2a; color: #fff;
-        }
-        #hero-canvas { position: absolute; top: 0; left: 0; width: 100%; height: 100%; z-index: 1; }
-        .hero-content { position: relative; z-index: 2; }
-        #hero h1 {
-            font-size: clamp(3rem, 6vw, 5rem); font-weight: 800; line-height: 1.1;
-            background: linear-gradient(90deg, #fff, #c7d2fe);
-            -webkit-background-clip: text; -webkit-text-fill-color: transparent;
-            margin-bottom: 1.5rem;
-        }
-        #hero .tagline { font-size: 1.25rem; color: #e2e8f0; margin: 0 auto 2.5rem; max-width: 700px; }
+            .nav-links a {
+                position: relative;
+                /* Needed for the underline animation */
+                text-decoration: none;
+                color: var(--color-subtle);
+                font-weight: 600;
+                /* Made text slightly bolder */
+                padding: 8px 16px;
+                /* Added padding for a button-like feel */
+                border-radius: 50px;
+                /* Creates the rounded pill shape */
+                transition: color 0.3s, background-color 0.3s;
+            }
 
-        /* --- About Section --- */
-        .about-grid { display: grid; grid-template-columns: 1fr; gap: 4rem; align-items: center; }
-        @media (min-width: 992px) { .about-grid { grid-template-columns: 1fr 1fr; } }
-        .about-image {
-            background: url('team.jpg') no-repeat center center/cover;
-            border-radius: 1rem; min-height: 400px; box-shadow: var(--shadow-lg);
-        }
-        .section-header { text-align: left; margin-bottom: 1.5rem; }
-        .section-header h2 { font-size: 2.8rem; font-weight: 700; color: var(--color-dark); }
-        .section-header p { font-size: 1.1rem; color: var(--color-subtle); }
 
-        /* --- Contact Section --- */
-        #contact { background-color: var(--color-light); }
-        .contact-form { max-width: 700px; margin: 0 auto; }
-        .form-grid { display: grid; grid-template-columns: 1fr; gap: 1.5rem; }
-        @media (min-width: 768px) { .form-grid { grid-template-columns: 1fr 1fr; } }
-        .form-group { display: flex; flex-direction: column; }
-        .form-group.full-width { grid-column: 1 / -1; }
-        .form-group label { font-weight: 500; margin-bottom: 0.5rem; display: block; }
-        .form-group input, .form-group textarea {
-            width: 100%; padding: 0.8rem; border: 1px solid #cbd5e1; border-radius: 0.375rem;
-            font-size: 1rem; font-family: 'Poppins', sans-serif; transition: all 0.3s;
-        }
-        .form-group input:focus, .form-group textarea:focus {
-            outline: none; border-color: var(--color-primary);
-            box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.2);
-        }
-        .form-group textarea { resize: vertical; min-height: 120px; }
+            .nav-links a:hover {
+                color: var(--color-primary);
+                background-color: var(--color-light);
+                /* Adds a subtle background on hover */
+            }
 
-        /* --- Footer --- */
-        .footer { background-color: var(--color-dark); color: var(--color-light); padding: 4rem 0; text-align: center; }
-        .footer .logo { justify-content: center; }
-        .footer .logo-text { color: #fff; }
-        .footer .tagline { margin: 1rem 0 2rem; color: var(--color-subtle); }
-        .footer-links { margin-bottom: 2rem; display: flex; justify-content: center; gap: 2rem; }
-        .footer-links a { color: var(--color-light); text-decoration: none; font-weight: 500; }
-        .footer-links a:hover { text-decoration: underline; }
-        .contact-details p { margin-bottom: 0.5rem; }
-        .contact-details a { color: #fff; text-decoration: none; }
-        .contact-details a:hover { text-decoration: underline; }
-        .copyright { margin-top: 3rem; font-size: 0.9rem; color: var(--color-subtle); }
+            .nav-links a::after {
+                content: '';
+                position: absolute;
+                width: 0;
+                height: 2px;
+                bottom: -4px;
+                left: 50%;
+                transform: translateX(-50%);
+                background-color: var(--color-primary);
+                transition: width 0.3s ease-out;
+            }
+
+            .nav-links a:hover::after {
+                width: 60%;
+                /* The underline grows to 60% width on hover */
+            }
+
+            .nav-actions {
+                display: flex;
+                align-items: center;
+                gap: 1rem;
+            }
+
+            .btn {
+                display: inline-block;
+                padding: 0.6rem 1.2rem;
+                border-radius: 50px;
+                text-decoration: none;
+                font-weight: 600;
+                transition: all 0.3s;
+            }
+
+            .btn-secondary {
+                border: 2px solid #e2e8f0;
+                color: var(--color-subtle);
+            }
+
+            .btn-secondary:hover {
+                border-color: var(--color-primary);
+                color: var(--color-primary);
+            }
+
+            .btn-primary {
+                background: linear-gradient(90deg, var(--color-primary), var(--color-secondary));
+                color: #fff;
+                border: 2px solid transparent;
+                box-shadow: var(--shadow-md);
+            }
+
+            .btn-primary:hover {
+                transform: translateY(-2px);
+                box-shadow: var(--shadow-lg);
+            }
+        }
+            /* --- Hero Section --- */
+            #hero {
+                position: relative;
+                text-align: center;
+                padding: 8rem 0;
+                background-color: #0a0a2a;
+                color: #fff;
+            }
+
+            #hero-canvas {
+                position: absolute;
+                top: 0;
+                left: 0;
+                width: 100%;
+                height: 100%;
+                z-index: 1;
+            }
+
+            .hero-content {
+                position: relative;
+                z-index: 2;
+            }
+
+            #hero h1 {
+                font-size: clamp(3rem, 6vw, 5rem);
+                font-weight: 800;
+                line-height: 1.1;
+                background: linear-gradient(90deg, #fff, #c7d2fe);
+                -webkit-background-clip: text;
+                -webkit-text-fill-color: transparent;
+                margin-bottom: 1.5rem;
+            }
+
+            #hero .tagline {
+                font-size: 1.25rem;
+                color: #e2e8f0;
+                margin: 0 auto 2.5rem;
+                max-width: 700px;
+            }
+
+            /* --- About Section --- */
+            .about-grid {
+                display: grid;
+                grid-template-columns: 1fr;
+                gap: 4rem;
+                align-items: center;
+            }
+
+            @media (min-width: 992px) {
+                .about-grid {
+                    grid-template-columns: 1fr 1fr;
+                }
+            }
+
+            .about-image {
+                background: url('team.jpg') no-repeat center center/cover;
+                border-radius: 1rem;
+                min-height: 400px;
+                box-shadow: var(--shadow-lg);
+            }
+
+            .section-header {
+                text-align: left;
+                margin-bottom: 1.5rem;
+            }
+
+            .section-header h2 {
+                font-size: 2.8rem;
+                font-weight: 700;
+                color: var(--color-dark);
+            }
+
+            .section-header p {
+                font-size: 1.1rem;
+                color: var(--color-subtle);
+            }
+
+            /* --- Contact Section --- */
+            #contact {
+                background-color: var(--color-light);
+            }
+
+            .contact-form {
+                max-width: 700px;
+                margin: 0 auto;
+            }
+
+            .form-grid {
+                display: grid;
+                grid-template-columns: 1fr;
+                gap: 1.5rem;
+            }
+
+            @media (min-width: 768px) {
+                .form-grid {
+                    grid-template-columns: 1fr 1fr;
+                }
+            }
+
+            .form-group {
+                display: flex;
+                flex-direction: column;
+            }
+
+            .form-group.full-width {
+                grid-column: 1 / -1;
+            }
+
+            .form-group label {
+                font-weight: 500;
+                margin-bottom: 0.5rem;
+                display: block;
+            }
+
+            .form-group input,
+            .form-group textarea {
+                width: 100%;
+                padding: 0.8rem;
+                border: 1px solid #cbd5e1;
+                border-radius: 0.375rem;
+                font-size: 1rem;
+                font-family: 'Poppins', sans-serif;
+                transition: all 0.3s;
+            }
+
+            .form-group input:focus,
+            .form-group textarea:focus {
+                outline: none;
+                border-color: var(--color-primary);
+                box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.2);
+            }
+
+            .form-group textarea {
+                resize: vertical;
+                min-height: 120px;
+            }
+
+            /* --- Footer --- */
+            .footer {
+                background-color: var(--color-dark);
+                color: var(--color-light);
+                padding: 4rem 0;
+                text-align: center;
+            }
+
+            .footer .logo {
+                justify-content: center;
+            }
+
+            .footer .logo-text {
+                color: #fff;
+            }
+
+            .footer .tagline {
+                margin: 1rem 0 2rem;
+                color: var(--color-subtle);
+            }
+
+            .footer-links {
+                margin-bottom: 2rem;
+                display: flex;
+                justify-content: center;
+                gap: 2rem;
+            }
+
+            .footer-links a {
+                color: var(--color-light);
+                text-decoration: none;
+                font-weight: 500;
+            }
+
+            .footer-links a:hover {
+                text-decoration: underline;
+            }
+
+            .contact-details p {
+                margin-bottom: 0.5rem;
+            }
+
+            .contact-details a {
+                color: #fff;
+                text-decoration: none;
+            }
+
+            .contact-details a:hover {
+                text-decoration: underline;
+            }
+
+            .copyright {
+                margin-top: 3rem;
+                font-size: 0.9rem;
+                color: var(--color-subtle);
+            }
     </style>
 </head>
+
 <body>
     <header class="header">
         <div class="container">
@@ -152,8 +413,10 @@
             <canvas id="hero-canvas"></canvas>
             <div class="hero-content container">
                 <h1>Empowering talents for tomorrow.</h1>
-                <p class="tagline">Stop guessing, start planning. Our Career Compass tool provides a personalized, data-driven roadmap to bridge the gap between your college curriculum and your dream tech job.</p>
-                <a href="#about" class="btn btn-primary" style="padding: 1rem 2.5rem; font-size: 1.1rem;">Get Started</a>
+                <p class="tagline">Stop guessing, start planning. Our Career Compass tool provides a personalized,
+                    data-driven roadmap to bridge the gap between your college curriculum and your dream tech job.</p>
+                <a href="#about" class="btn btn-primary" style="padding: 1rem 2.5rem; font-size: 1.1rem;">Get
+                    Started</a>
             </div>
         </section>
 
@@ -164,9 +427,15 @@
                         <h2>Empowering Talents for Tomorrow.</h2>
                         <p>Our Mission</p>
                     </div>
-                    <p>At Diverse Loopers, we believe every student deserves a clear path to their dream career. The tech industry is vast and complex, and university curriculums can't always keep up with its rapid evolution. Our Career Compass was born from a simple idea: to provide students with the clarity and confidence they need to navigate their educational journey and enter the workforce with the right skills.</p>
+                    <p>At Diverse Loopers, we believe every student deserves a clear path to their dream career. The
+                        tech industry is vast and complex, and university curriculums can't always keep up with its
+                        rapid evolution. Our Career Compass was born from a simple idea: to provide students with the
+                        clarity and confidence they need to navigate their educational journey and enter the workforce
+                        with the right skills.</p>
                     <br>
-                    <p>We analyze thousands of job descriptions and compare them against standard engineering syllabi to give you a personalized, actionable roadmap. We're here to turn your ambition into achievement.</p>
+                    <p>We analyze thousands of job descriptions and compare them against standard engineering syllabi to
+                        give you a personalized, actionable roadmap. We're here to turn your ambition into achievement.
+                    </p>
                 </div>
                 <div class="about-image fade-in"></div>
             </div>
@@ -180,11 +449,15 @@
                 </div>
                 <form class="contact-form fade-in">
                     <div class="form-grid">
-                        <div class="form-group"><label for="name">Full Name</label><input type="text" id="name" required></div>
-                        <div class="form-group"><label for="email">Email Address</label><input type="email" id="email" required></div>
-                        <div class="form-group full-width"><label for="message">Message</label><textarea id="message" required></textarea></div>
+                        <div class="form-group"><label for="name">Full Name</label><input type="text" id="name"
+                                required></div>
+                        <div class="form-group"><label for="email">Email Address</label><input type="email" id="email"
+                                required></div>
+                        <div class="form-group full-width"><label for="message">Message</label><textarea id="message"
+                                required></textarea></div>
                     </div>
-                    <button type="submit" class="btn btn-primary" style="width: 100%; margin-top: 2rem;">Send Message</button>
+                    <button type="submit" class="btn btn-primary" style="width: 100%; margin-top: 2rem;">Send
+                        Message</button>
                 </form>
             </div>
         </section>
@@ -192,7 +465,8 @@
 
     <footer class="footer">
         <div class="container">
-            <a href="#" class="logo"><img src="logo2.png" alt="Diverse Loopers Logo"><span class="logo-text">Diverse Loopers</span></a>
+            <a href="#" class="logo"><img src="logo2.png" alt="Diverse Loopers Logo"><span class="logo-text">Diverse
+                    Loopers</span></a>
             <p class="tagline">Empowering talents for tomorrow</p>
             <div class="footer-links">
                 <a href="#about">About Us</a>
@@ -303,4 +577,5 @@
         fadeElements.forEach(el => observer.observe(el));
     </script>
 </body>
+
 </html>
