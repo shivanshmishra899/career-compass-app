@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Your Profile - Diverse Loopers</title>
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        :root { --color-primary: #3b82f6; --color-secondary: #ec4899; --color-dark: #1e293b; --color-light: #f1f5f9; --color-text: #334155; --color-subtle: #64748b; --shadow-lg: 0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1); }
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+        body { font-family: 'Poppins', sans-serif; background-color: var(--color-light); color: var(--color-text); display: flex; justify-content: center; align-items: center; min-height: 100vh; }
+        .profile-card { background: #fff; padding: 2.5rem; border-radius: 1rem; box-shadow: var(--shadow-lg); text-align: center; max-width: 500px; width: 90%; }
+        .profile-header img { width: 100px; height: 100px; border-radius: 50%; object-fit: cover; margin-bottom: 1rem; border: 4px solid var(--color-primary); }
+        .profile-header h1 { font-size: 2rem; color: var(--color-dark); margin-bottom: 0.5rem; }
+        .profile-details { margin-top: 2rem; text-align: left; }
+        .detail-item { display: flex; justify-content: space-between; padding: 1rem; border-bottom: 1px solid #e2e8f0; }
+        .detail-item strong { color: var(--color-dark); }
+        .btn { display: inline-block; padding: 0.8rem 1.5rem; border-radius: 50px; text-decoration: none; font-weight: 600; transition: all 0.3s; cursor: pointer; border: none; margin-top: 2rem; }
+        .btn-danger { background: #ef4444; color: #fff; }
+        .btn-danger:hover { background: #dc2626; }
+        .loader { width: 50px; height: 50px; border: 5px solid var(--color-primary); border-top-color: var(--color-secondary); border-radius: 50%; animation: spin 1s linear infinite; }
+        @keyframes spin { to { transform: rotate(360deg); } }
+    </style>
+</head>
+<body>
+    <div class="profile-card" id="profile-card">
+        <div class="loader"></div>
+    </div>
+
+    <script>
+        const SUPABASE_URL = 'https://tjqsmkaiajdpotmafqvw.supabase.co'; // <-- Paste your Supabase URL here
+        const SUPABASE_ANON_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InRqcXNta2FpYWpkcG90bWFmcXZ3Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3NTU5ODA3NDIsImV4cCI6MjA3MTU1Njc0Mn0.9710q9W5EFfCagj340AizUSKiOXYApy0xkTFszFjO8o'; // <-- Paste your Supabase Anon Key here
+
+        const { createClient } = supabase;
+        const _supabase = createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
+        const profileCard = document.getElementById('profile-card');
+
+        async function loadUserProfile() {
+            const { data: { session } } = await _supabase.auth.getSession();
+
+            if (!session) {
+                // If no user is logged in, redirect to the login page
+                window.location.href = 'login.html';
+                return;
+            }
+
+            const user = session.user;
+            
+            // Fetch additional profile data from the 'profiles' table
+            const { data: profile, error } = await _supabase
+                .from('profiles')
+                .select('username')
+                .eq('id', user.id)
+                .single();
+
+            if (error) {
+                console.error('Error fetching profile:', error);
+            }
+
+            // Display the user data
+            profileCard.innerHTML = `
+                <div class="profile-header">
+                    <img src="https://placehold.co/100x100/e0e7ff/3730a3?text=${(profile?.username || user.email).charAt(0).toUpperCase()}" alt="Profile Picture">
+                    <h1>Welcome, ${profile?.username || 'User'}!</h1>
+                </div>
+                <div class="profile-details">
+                    <div class="detail-item">
+                        <strong>Email:</strong>
+                        <span>${user.email}</span>
+                    </div>
+                    <div class="detail-item">
+                        <strong>User ID:</strong>
+                        <span>${user.id}</span>
+                    </div>
+                    <div class="detail-item">
+                        <strong>Joined:</strong>
+                        <span>${new Date(user.created_at).toLocaleDateString()}</span>
+                    </div>
+                </div>
+                <button id="logout-button" class="btn btn-danger">Logout</button>
+            `;
+
+            // Add event listener for the logout button
+            document.getElementById('logout-button').addEventListener('click', async () => {
+                await _supabase.auth.signOut();
+                window.location.href = 'index.html';
+            });
+        }
+
+        // Load the profile when the page loads
+        document.addEventListener('DOMContentLoaded', loadUserProfile);
+    </script>
+</body>
+</html>
